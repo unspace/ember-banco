@@ -9,6 +9,10 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
+Ember.$.ajaxSetup({
+  dataType: 'json'
+});
+
 loadInitializers(App, 'banco');
 
 export default App;
