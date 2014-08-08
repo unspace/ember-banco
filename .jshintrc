@@ -1,8 +1,9 @@
 {
   "predef": {
+    "BancoENV": true,
     "document": true,
-    "window": true,
-    "BancoENV": true
+    "moment": true,
+    "window": true
   },
   "browser" : true,
   "boss" : true,
