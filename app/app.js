@@ -10,7 +10,10 @@ var App = Ember.Application.extend({
 });
 
 Ember.$.ajaxSetup({
-  dataType: 'json'
+  dataType: 'json',
+  headers: {
+    'Accept': 'application/vnd.banco.v1+json'
+  }
 });
 
 loadInitializers(App, 'banco');

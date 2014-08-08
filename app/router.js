@@ -5,6 +5,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.resource('accounts', function() {
+    this.route('show', { path: '/:account_id'});
+  });
 });
 
 export default Router;

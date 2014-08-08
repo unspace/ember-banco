@@ -1,0 +1,24 @@
+.sidebar
+  position: fixed
+  left: 0
+  bottom: 0
+  top: $header-height
+  width: 222px
+  background: $banco-dark-orange
+
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+
+    li a
+      display: block
+      text-align: center
+      line-height: 55px
+      margin: 1px 0
+      color: rgba(white, 0.9)
+      text-decoration: none
+
+      &.active
+        color: white
+        background: lighten($banco-dark-orange, 15%)

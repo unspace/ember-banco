@@ -1,0 +1,16 @@
+<table>
+  <theader>
+    <tr>
+      <th>Account</th>
+      <th>Balance</th>
+    </tr>
+  </theader>
+  <tbody>
+    {{#each account in this}}
+      <tr>
+        <td>{{unbound account.label}}</td>
+        <td>{{unbound account.balanceInCents}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

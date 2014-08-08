@@ -1,4 +1,71 @@
 body, html
   font-family: "Helvetica Neue"
-  background: white
   color: #111
+
+body
+  background: white
+
+body > div >
+  header
+    z-index: 9999
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    height: $header-height
+    background: rgba($banco-orange, 0.9)
+
+    svg
+      fill: white
+
+    h1, nav, ul, li
+      margin: 0
+      padding: 0
+      line-height: 1
+
+    nav
+      position: absolute
+      right: $gutter
+      top: 36%
+      color: rgba(white, 0.75)
+
+      ul
+        list-style: none
+
+    h1
+      height: $header-height
+      width: $sidebar-width
+      background-color: rgba(darken($banco-orange, 5%), 0.9)
+      position: relative
+      text-align: center
+
+      a
+        text-decoration: none
+
+      span
+        position: relative
+        display: inline-block
+        line-height: $header-height + 5px
+        &:after
+          position: relative
+          top: -24px
+          font-size: 9px
+          font-weight: 300
+          color: rgba(white, 0.4)
+          content: "®"
+
+  main
+    position: relative
+    margin-top: $header-height
+    margin-left: $sidebar-width
+
+  footer
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0
+    font-size: 13px
+    line-height: 22px
+    padding: 0 6px
+    text-align: right
+    color: rgba(black, 0.3)

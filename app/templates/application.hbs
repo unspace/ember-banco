@@ -1,11 +1,24 @@
 <header>
-  <h1>Banco</h1>
+  <h1 class="logo">
+    {{#link-to "index"}}
+      {{banco-wordmark height=31}}
+    {{/link-to}}
+  </h1>
+
+  {{#if session.id}}
+    <nav role="navigation">
+      <ul>
+        <li>{{session.name}}</li>
+      </ul>
+    </nav>
+  {{/if}}
 </header>
 
 <main role="main">
+  {{render "sidebar"}}
   {{outlet}}
 </main>
 
 <footer>
-  &copy; {{unbound year}} Banco Associates Group Inc.
+  Banco Financial Group Website &copy; {{unbound year}}
 </footer>
