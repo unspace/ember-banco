@@ -3,9 +3,9 @@ import Ember from 'ember';
 export default Ember.ArrayController.extend({
   needs: 'accounts',
 
-  model: Ember.computed.sort('controllers.accounts', function(a, b) {
-    var aTime = a.valueOf();
-    var bTime = b.valueOf();
+  model: Ember.computed.sort('controllers.accounts', function(aTime, bTime) {
+    var a = aTime.valueOf();
+    var b = bTime.valueOf();
 
     if (a > b) {
       return -1;

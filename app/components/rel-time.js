@@ -34,7 +34,7 @@ export default Ember.Component.extend({
   },
 
   stop: function() {
-    Em.run.cancel(this.nextTick);
+    Ember.run.cancel(this.nextTick);
   },
 
   startTicking: function() {
