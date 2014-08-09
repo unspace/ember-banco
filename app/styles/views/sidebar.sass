@@ -14,10 +14,12 @@
     li a
       display: block
       text-align: center
-      line-height: 55px
-      margin: 1px 0
+      height: $header-height
+      line-height: $header-height - 4px
       color: rgba(white, 0.9)
       text-decoration: none
+      font-size: 18px
+      +transition(background-color ease-in 0.2s)
 
       &.active
         color: white

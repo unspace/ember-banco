@@ -2,14 +2,14 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 var ACCOUNTS = {
-  isa:           'Savings Account',
-  tfsa:          'Tax Free Savings Account',
-  transactional: 'Chequing Account'
+  isa:           'Savings',
+  tfsa:          'Tax Free Savings',
+  transactional: 'Chequing'
 };
 
 var CURRENCIES = {
-  cad: 'Canadian Dollar',
-  usd: 'US Dollar'
+  cad: 'CAD',
+  usd: 'USD'
 };
 
 var PLANS = {
@@ -38,6 +38,6 @@ export default DS.Model.extend({
   interestRate:    DS.attr('number'),
 
   plan:        cpLookup('planType', PLANS),
-  currency:    cpLookup('currencyType', CURRENCIES),
+  currency:    cpLookup('balanceCurrency', CURRENCIES),
   description: cpLookup('type', ACCOUNTS)
 });

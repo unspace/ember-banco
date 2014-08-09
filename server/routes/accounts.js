@@ -11,14 +11,14 @@ module.exports = function(app) {
       plan_fee_in_cents: 0,
       interest_rate:     0.15,
       balance_in_cents:  124200,
-      currency_type:     'cad'
+      balance_currency:  'cad'
     },
     {
       id:                '232edf05-8d90-4a06-95b0-867312558de4',
       updated_at:        '2014-07-22T20:11:01.181Z',
-      type:              'isa.essential',
+      type:              'isa',
       label:             'Rainy Day Savings',
-      plan_type:         'essential',
+      plan_type:         'isa.essential',
       plan_fee_in_cents: 0,
       interest_rate:     0.0001,
       balance_in_cents:  62100,

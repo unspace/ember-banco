@@ -1,0 +1,17 @@
+.fmt-dollars
+  position: relative
+
+  .symbol
+    margin-right: 1px
+
+  &.neg
+    color: $red
+
+    .symbol
+      color: lighten($red, 15%)
+
+  &.pos
+    color: $green
+
+    .symbol
+      color: lighten($green, 15%)

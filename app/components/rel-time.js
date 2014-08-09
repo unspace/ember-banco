@@ -1,0 +1,47 @@
+import Ember from 'ember';
+
+var INTERVAL = 1000; // Every second
+
+export default Ember.Component.extend({
+  tagName: 'time',
+  time: null,
+  layout: Ember.Handlebars.compile('{{caption}}'),
+  attributeBindings: 'isoTime:datetime',
+
+  caption: function() {
+    var time = this.get('time');
+
+    if (!time) {
+      return null;
+    }
+
+    return moment(time).fromNow();
+  }.property('time'),
+
+  isoTime: function() {
+    var time = this.get('time');
+
+    return time ? moment(time).toISOString() : null;
+  }.property('time'),
+
+  tick: function() {
+    var tick = Ember.run.later(this, function() {
+      this.notifyPropertyChange('caption');
+      this.tick();
+    }, INTERVAL);
+
+    this.nextTick = tick;
+  },
+
+  stop: function() {
+    Em.run.cancel(this.nextTick);
+  },
+
+  startTicking: function() {
+    this.tick();
+  }.on('didInsertElement'),
+
+  stopTicking: function() {
+    this.stop();
+  }.on('willDestroyElement')
+});

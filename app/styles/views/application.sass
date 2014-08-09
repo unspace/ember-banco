@@ -1,13 +1,13 @@
 body, html
   font-family: "Roboto", "sans-serif"
-  font-weight: 300
+  font-weight: 400
   color: #111
 
 body
-  background: white
+  background: #eee
 
-body > div >
-  header
+body > div
+  > header
     z-index: 9999
     position: fixed
     top: 0
@@ -28,7 +28,7 @@ body > div >
       position: absolute
       right: $gutter
       top: 36%
-      color: rgba(white, 0.75)
+      color: rgba(white, 0.8)
 
       ul
         list-style: none
@@ -47,6 +47,7 @@ body > div >
         position: relative
         display: inline-block
         line-height: $header-height + 5px
+
         &:after
           position: relative
           top: -24px
@@ -55,12 +56,25 @@ body > div >
           color: rgba(white, 0.4)
           content: "®"
 
-  main
+  > main
     position: relative
+    padding: 0
+    margin: 0
     margin-top: $header-height
     margin-left: $sidebar-width
 
-  footer
+    > header
+      height: $header-height
+      line-height: $header-height - 5px
+      padding: 0 $gutter
+      background: lighten($banco-orange, 30%)
+      color: darken($banco-dark-orange, 10%)
+
+      h1, h2
+        font-weight: 600
+        font-size: 20px
+
+  > footer
     position: fixed
     bottom: 0
     left: 0

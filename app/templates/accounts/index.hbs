@@ -1,15 +1,36 @@
-<table>
-  <theader>
+<header>
+  <h1>Accounts</h1>
+</header>
+
+<table class="accounts-index">
+  <thead>
     <tr>
       <th>Account</th>
       <th>Balance</th>
     </tr>
-  </theader>
+  </thead>
   <tbody>
     {{#each account in this}}
       <tr>
-        <td>{{unbound account.label}}</td>
-        <td>{{unbound account.balanceInCents}}</td>
+        <td class="account-info">
+          <div class="label">
+            {{unbound account.label}}
+          </div>
+          <div class="details">
+            <span class="type">
+              {{unbound account.description}}
+            </span>
+            <span class="currency">
+              {{unbound account.currency}}
+            </span>
+            <span class="updated-at">
+              Updated {{rel-time time=account.updatedAt}}
+            </span>
+          </div>
+        </td>
+        <td class="account-balance">
+          {{fmt-dollars cents=account.balanceInCents}}
+        </td>
       </tr>
     {{/each}}
   </tbody>
