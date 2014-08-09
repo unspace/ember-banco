@@ -5,6 +5,32 @@ body, html
 
 body
   background: #eee
+  &.loading
+    &:after
+      z-index: 99999
+      position: fixed
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background: $banco-orange
+      content: ""
+    &:before
+      position: fixed
+      color: white
+      z-index: 999999
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      content: " "
+      width: 150px
+      height: 150px
+      margin: auto
+      background-color: white
+      border-radius: 100%
+      -webkit-animation: scaleout 1.0s infinite ease-in-out
+      animation: scaleout 1.0s infinite ease-in-out
 
 body > div
   > header

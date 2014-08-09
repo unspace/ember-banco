@@ -49,7 +49,9 @@ module.exports = function(app) {
   ];
 
   router.get('/accounts', function(req, res) {
-    res.send({ accounts: ACCOUNTS });
+    setTimeout(function() {
+      res.send({ accounts: ACCOUNTS });
+    }, 750);
   });
 
   router.get('/accounts/:id', function(req, res) {

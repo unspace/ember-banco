@@ -23,7 +23,13 @@ export default Ember.Route.extend({
 
   actions: {
     loading: function() {
-      return true;
+      var $body = Ember.$('body');
+
+      $body.addClass('loading');
+
+      this.router.one('didTransition', function() {
+        $body.removeClass('loading');
+      });
     }
   }
 });
