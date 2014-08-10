@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+var EVERY_THREE_RE = /\B(?=(\d{3})+(?!\d))/g;
+
 export default Ember.Component.extend({
   tagName: 'span',
   classNames: 'fmt-dollars',
@@ -23,6 +25,8 @@ export default Ember.Component.extend({
   }.property('dollars'),
 
   fmtValue: function() {
-    return Math.abs(this.get('dollars')).toFixed(2);
+    var base = Math.abs(this.get('dollars')).toFixed(2);
+    var html = base.replace(EVERY_THREE_RE, '<span class="sep">,</span>');
+    return new Ember.Handlebars.SafeString(html);
   }.property('dollars')
 });
