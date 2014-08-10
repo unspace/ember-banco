@@ -25,8 +25,6 @@ export default Ember.Route.extend({
     loading: function() {
       var $body = Ember.$('body');
 
-      $body.addClass('loading');
-
       this.router.one('didTransition', function() {
         $body.addClass('reveal');
 
