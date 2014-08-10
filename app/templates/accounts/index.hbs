@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     {{#each account in this}}
-      <tr>
+      {{#link-to "accounts.show" account tagName="tr"}}
         <td class="account-info">
           <div class="label">
             {{unbound account.label}}
@@ -31,7 +31,7 @@
         <td class="account-balance">
           {{fmt-dollars cents=account.balanceInCents}}
         </td>
-      </tr>
+      {{/link-to}}
     {{/each}}
   </tbody>
 </table>

@@ -4,6 +4,15 @@ table.accounts-index
   thead
     display: none
 
+  tbody tr
+    cursor: pointer
+
+    td
+      +transition(background-color ease-in-out 200ms)
+
+    &:hover td
+      background-color: #fffeef
+
   th, td
     font-size: 18px
     padding: 0 $gutter
@@ -16,9 +25,11 @@ table.accounts-index
     text-align: left
 
     .label
+      position: relative
+      top: -1px
       font-weight: bold
       font-size: 18px
-      line-height: 26px
+      line-height: 24px
 
     .details
       font-size: 14px
