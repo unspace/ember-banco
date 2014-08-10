@@ -28,7 +28,11 @@ export default Ember.Route.extend({
       $body.addClass('loading');
 
       this.router.one('didTransition', function() {
-        $body.removeClass('loading');
+        $body.addClass('reveal');
+
+        $body.one('transitionend', function() {
+          $body.removeClass('loading', 'reveal');
+        });
       });
     }
   }
