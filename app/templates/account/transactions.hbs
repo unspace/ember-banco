@@ -1,19 +1,42 @@
-{{partial "account/_account"}}
-<header>
-  <h1>
-    <span class="heading">Banking Accounts</span>
-    <span class="sep">&gt;</span>
-    <span class="account-label">{{unbound account.label}}</span>
-  </h1>
+<header class="account-header">
+  <h1>{{unbound account.label}}</h1>
+  <h2>
+    <span class="plan">
+      <span class="label">Plan:</span>
+      <span class="value">{{unbound account.plan}}</span>
+    </span>
+    <span class="currency">
+      <span class="label">Currency:</span>
+      <span class="value">{{unbound account.currency}}</span>
+    </span>
+    <span class="balance">
+      <span class="label">Balance:</span>
+      <span class="value">{{fmt-dollars cents=account.balanceInCents}}</span>
+    </span>
+    {{#if account.interestRate}}
+      <span class="interest-rate">
+        <span class="label">Rate:</span>
+        <span>{{unbound account.interestRate}}%</span>
+      </span>
+    {{/if}}
+  </h2>
 </header>
 
 <table class="content-table account-transactions">
   <thead>
     <tr>
-      <th class="transaction-info">Transaction</th>
-      <th class="transaction-date">Date</th>
-      <th class="transaction-withdrawl">Withdrawl</th>
-      <th class="transaction-deposit">Deposit</th>
+      <th class="transaction-info">
+        Transaction
+      </th>
+      <th class="transaction-date">
+        Date
+      </th>
+      <th class="transaction-withdrawl">
+        Withdrawl
+      </th>
+      <th class="transaction-deposit">
+        Deposit
+      </th>
     </tr>
   </thead>
   <tbody>

@@ -6,19 +6,21 @@ table.content-table
       background-color: #fffeef
 
   th
+    background: lighten($banco-orange, 30%)
     text-align: left
     height: $header-height / 2
+    border-bottom: none
 
   td
     height: $header-height
     text-align: left
+    background: white
+    border-bottom: 1px solid #ddd
 
   th, td
     font-size: 16px
     padding: 0 $gutter / 2
     vertical-align: middle
-    border-bottom: 1px solid #ddd
-    background: white
     &:first-child
       padding-left: $gutter
     &:last-child

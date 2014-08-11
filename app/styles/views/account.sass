@@ -1,5 +1,41 @@
 table.account-transactions
   .transaction-withdrawl
     text-align: right
+
   .transaction-deposit
     text-align: right
+
+.account-header
+  font-size: 16px
+  position: relative
+
+  h1
+    position: absolute
+    left: $gutter
+    margin: 0
+    padding: 0
+
+  h2
+    position: absolute
+    right: $gutter
+    line-height: $header-height - 3px
+    font-weight: normal
+    font-size: 16px
+    margin: 0
+    padding: 0
+
+    .label
+      color: lighten($banco-dark-orange, 28%)
+
+    .value
+      font-weight: 600
+
+    > span
+      display: inline-block
+
+      &:after
+        color: lighten($banco-orange, 15%)
+        content: "•"
+
+      &:last-of-type:after
+        display: none
