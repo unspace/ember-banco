@@ -8,7 +8,9 @@ Router.map(function() {
   this.resource('accounts');
 
   this.resource('account', { path: '/accounts/:account_id' }, function() {
-    this.route('transactions', { path: '/' });
+    this.route('transactions', { path: '/' }, function() {
+      this.route('image', { path: '/transactions/:transaction_id/image' });
+    });
   });
 });
 

@@ -32,6 +32,22 @@ export default Ember.Route.extend({
       });
 
       return true;
+    },
+
+    closeOverlay: function() {
+      var route = this;
+      var $body = Ember.$('body');
+
+      $('body').addClass('dismiss-overlay');
+
+      $('body').on('transitionend', function() {
+        $body.removeClass('dismiss-overlay', 'has-overlay');
+
+        route.disconnectOutlet({
+          outlet: 'overlay',
+          parentView: 'application'
+        });
+      });
     }
   }
 });

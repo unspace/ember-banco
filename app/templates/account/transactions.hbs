@@ -5,14 +5,17 @@
       <span class="label">Plan:</span>
       <span class="value">{{unbound account.plan}}</span>
     </span>
+
     <span class="currency">
       <span class="label">Currency:</span>
       <span class="value">{{unbound account.currency}}</span>
     </span>
+
     <span class="balance">
       <span class="label">Balance:</span>
       <span class="value">{{fmt-dollars cents=account.balanceInCents}}</span>
     </span>
+
     {{#if account.interestRate}}
       <span class="interest-rate">
         <span class="label">Rate:</span>
@@ -28,17 +31,21 @@
       <th class="transaction-info">
         Transaction
       </th>
+
       <th class="transaction-date">
         Date
       </th>
+
       <th class="transaction-withdrawl">
         Withdrawl
       </th>
+
       <th class="transaction-deposit">
         Deposit
       </th>
     </tr>
   </thead>
+
   <tbody>
     {{#each transaction in this itemController="account/transactions/item"}}
       <tr {{bind-attr class="transaction.hasImage:has-image"}}>
@@ -46,23 +53,28 @@
           <div class="label">
             {{unbound transaction.summary}}
           </div>
+
           <div class="details">
             <span class="detail">{{unbound transaction.detail}}</span>
           </div>
-          <div class="image">
-            {{#if transaction.hasImage}}
-              <img {{bind-attr src=transaction.imageUrl}} width="72">
-            {{/if}}
-          </div>
+
+          {{#if transaction.hasImage}}
+            {{#link-to "account.transactions.image" account transaction class="image" title="View full-size image"}}
+              <img {{bind-attr src=transaction.imageUrl}} width="72" height="34">
+            {{/link-to}}
+          {{/if}}
         </td>
+
         <td class="transaction-date">
           {{fmt-moment moment=transaction.createdAt fmt="MMM Do, YYYY"}}
         </td>
+
         <td class="transaction-withdrawl">
           {{#if transaction.isWithdrawl}}
             {{fmt-dollars cents=transaction.amountInCents style=false sign="-"}}
           {{/if}}
         </td>
+
         <td class="transaction-deposit">
           {{#if transaction.isDeposit}}
             {{fmt-dollars cents=transaction.amountInCents}}
