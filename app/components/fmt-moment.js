@@ -9,10 +9,10 @@ export default Ember.Component.extend({
   attributeBindings: 'isoDate:datetime',
 
   formatted: function() {
-    return moment(this.get('moment')).format(this.get('fmt'))
+    return moment(this.get('moment')).format(this.get('fmt'));
   }.property('moment', 'fmt'),
 
   isoDate: function() {
-    return moment(this.get('moment')).format('YYYY-MM-DD')
+    return moment(this.get('moment')).format('YYYY-MM-DD');
   }.property('moment')
 });

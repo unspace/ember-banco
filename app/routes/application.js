@@ -38,9 +38,9 @@ export default Ember.Route.extend({
       var route = this;
       var $body = Ember.$('body');
 
-      $('body').addClass('dismiss-overlay');
+      Ember.$('body').addClass('dismiss-overlay');
 
-      $('body').on('transitionend', function() {
+      Ember.$('body').on('transitionend', function() {
         $body.removeClass('dismiss-overlay', 'has-overlay');
 
         route.disconnectOutlet({
