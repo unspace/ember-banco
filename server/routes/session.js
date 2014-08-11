@@ -24,6 +24,8 @@ module.exports = function(app) {
     wantsPartnerEmails: false
   };
 
+  app.SESSION = SESSION;
+
   router.get('/session', function(req, res) {
     res.send({ session: SESSION });
   });

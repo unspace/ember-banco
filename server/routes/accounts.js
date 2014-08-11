@@ -48,6 +48,25 @@ module.exports = function(app) {
     }
   ];
 
+  app.ACCOUNTS = ACCOUNTS;
+
+  app.findAccount = function(id) {
+    var i;
+    var a;
+    var found = null;
+
+    for (i = 0; i < ACCOUNTS.length; i++) {
+      a = ACCOUNTS[i];
+
+      if (a.id === id) {
+        found = a;
+        break;
+      }
+    }
+
+    return found;
+  };
+
   router.get('/accounts', function(req, res) {
     setTimeout(function() {
       res.send({ accounts: ACCOUNTS });
@@ -55,7 +74,7 @@ module.exports = function(app) {
   });
 
   router.get('/accounts/:id', function(req, res) {
-    var found = ACCOUNTS[req.id];
+    var found = app.findAccount(req.query.id);
 
     if (found) {
       res.send({ account: found });

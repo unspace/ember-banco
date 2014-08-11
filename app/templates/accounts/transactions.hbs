@@ -1,0 +1,29 @@
+<header>
+  <h1>Banking Accounts</h1>
+</header>
+
+<table class="accounts-show">
+  <thead>
+    <tr>
+      <th>Transaction</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each transaction in this}}
+      <tr>
+        <td class="transaction-info">
+          <div class="summary">
+            {{unbound transaction.summary}}
+          </div>
+          <div class="detail">
+            {{unbound transaction.detail}}
+          </div>
+        </td>
+        <td class="transaction-amount">
+          {{fmt-dollars cents=transaction.amountInCents}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
