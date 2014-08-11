@@ -40,14 +40,19 @@
     </tr>
   </thead>
   <tbody>
-    {{#each transaction in this}}
-      <tr>
+    {{#each transaction in this itemController="account/transactions/item"}}
+      <tr {{bind-attr class="transaction.hasImage:has-image"}}>
         <td class="transaction-info">
           <div class="label">
             {{unbound transaction.summary}}
           </div>
           <div class="details">
             <span class="detail">{{unbound transaction.detail}}</span>
+          </div>
+          <div class="image">
+            {{#if transaction.hasImage}}
+              <img {{bind-attr src=transaction.imageUrl}} width="72">
+            {{/if}}
           </div>
         </td>
         <td class="transaction-date">
@@ -60,7 +65,7 @@
         </td>
         <td class="transaction-deposit">
           {{#if transaction.isDeposit}}
-            {{fmt-dollars cents=transaction.amountInCents style=false}}
+            {{fmt-dollars cents=transaction.amountInCents}}
           {{/if}}
         </td>
       </tr>

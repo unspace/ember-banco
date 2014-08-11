@@ -5,9 +5,37 @@ table.account-transactions
   .transaction-deposit
     text-align: right
 
+  thead
+    position: -webkit-sticky
+
+  td
+    position: relative
+
+  .has-image .transaction-info
+    .label, .details
+      margin-right: 96px
+
+    .image
+      position: absolute
+      right: $gutter / 2
+      top: 27%
+      font-size: 0
+
+      img
+        font-size: 0
+        +box-sizing(border-box)
+        border: 1px solid #ccc
+
+      &:hover
+        cursor: pointer
+        background: $banco-orange
+
+        img
+          opacity: 0.8
+          border-color: $banco-orange
+
 .account-header
   font-size: 16px
-  position: relative
 
   h1
     position: absolute
@@ -30,12 +58,16 @@ table.account-transactions
     .value
       font-weight: 600
 
+    .plan .label
+      display: none
+
     > span
       display: inline-block
 
       &:after
         color: lighten($banco-orange, 15%)
         content: "•"
+        margin: 0 3px
 
       &:last-of-type:after
         display: none
