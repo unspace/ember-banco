@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var INTERVAL = 1000; // Every second
+var INTERVAL = 60000; // Every minute
 
 export default Ember.Component.extend({
   tagName: 'time',
