@@ -7,6 +7,9 @@ export default Ember.Route.extend({
   },
 
   renderTemplate: function() {
-    this.render({ outlet: 'overlay' });
+    this.render('account/transactions/image', {
+      into: 'application',
+      outlet: 'overlay'
+    });
   }
 });
