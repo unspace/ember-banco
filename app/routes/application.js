@@ -30,6 +30,7 @@ export default Ember.Route.extend({
           $body.removeClass('loading', 'reveal');
         });
       });
+      return true;
     }
   }
 });
