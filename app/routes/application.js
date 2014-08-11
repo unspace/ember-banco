@@ -3,14 +3,12 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model: function() {
     return Ember.RSVP.hash({
-      session:  this.store.find('session', 'current'),
-      accounts: this.store.find('account')
+      session: this.store.find('session', 'current')
     });
   },
 
   setupController: function(_, data) {
     this.controllerFor('session').set('model', data.session);
-    this.controllerFor('accounts').set('model', data.accounts);
   },
 
   title: function(tokens) {

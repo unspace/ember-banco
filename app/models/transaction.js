@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -8,5 +9,8 @@ export default DS.Model.extend({
   imageUrl:      DS.attr('string'),
   amountInCents: DS.attr('number'),
 
-  account: DS.belongsTo('account')
+  account: DS.belongsTo('account'),
+
+  isWithdrawl: Ember.computed.equal('type', 'dr'),
+  isDeposit:   Ember.computed.equal('type', 'cr')
 });

@@ -11,16 +11,17 @@
     margin: 0
     padding: 0
 
-    li a
-      display: block
-      text-align: center
-      height: $header-height
-      line-height: $header-height - 4px
-      color: rgba(white, 0.9)
-      text-decoration: none
-      font-size: 18px
-      +transition(background-color ease-in 0.2s)
+    li
+      a
+        display: block
+        text-align: center
+        height: $header-height
+        line-height: $header-height - 4px
+        color: rgba(white, 0.9)
+        text-decoration: none
+        font-size: 18px
+        +transition(background-color ease-in 0.2s)
 
-      &.active
+      &.active a
         color: white
         background: lighten($banco-dark-orange, 15%)

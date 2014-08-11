@@ -2,7 +2,7 @@
   <h1>Banking Accounts</h1>
 </header>
 
-<table class="accounts-index">
+<table class="content-table accounts">
   <thead>
     <tr>
       <th>Account</th>
@@ -10,8 +10,8 @@
     </tr>
   </thead>
   <tbody>
-    {{#each account in this}}
-      {{#link-to "accounts.transactions" account tagName="tr"}}
+    {{#each account in sorted}}
+      {{#link-to "account.transactions" account tagName="tr"}}
         <td class="account-info">
           <div class="label">
             {{unbound account.label}}

@@ -1,9 +1,9 @@
 <nav class="sidebar" role="navigation">
   <ul>
-    <li>
+    <li {{bind-attr class="inOverview:active"}}>
       {{#link-to "index"}}Overview{{/link-to}}
     </li>
-    <li>
+    <li {{bind-attr class="inAccounts:active"}}>
       {{#link-to "accounts"}}Accounts{{/link-to}}
     </li>
     {{!--

@@ -1,0 +1,18 @@
+table.accounts
+  thead
+    display: none
+
+  tbody tr
+    cursor: pointer
+
+    td
+      +transition(background-color ease-in-out 200ms)
+
+    &:hover td
+      background-color: #fffeef
+
+  .account-info
+    text-align: left
+
+  .account-balance
+    text-align: right

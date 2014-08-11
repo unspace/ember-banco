@@ -1,0 +1,46 @@
+{{partial "account/_account"}}
+<header>
+  <h1>
+    <span class="heading">Banking Accounts</span>
+    <span class="sep">&gt;</span>
+    <span class="account-label">{{unbound account.label}}</span>
+  </h1>
+</header>
+
+<table class="content-table account-transactions">
+  <thead>
+    <tr>
+      <th class="transaction-info">Transaction</th>
+      <th class="transaction-date">Date</th>
+      <th class="transaction-withdrawl">Withdrawl</th>
+      <th class="transaction-deposit">Deposit</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each transaction in this}}
+      <tr>
+        <td class="transaction-info">
+          <div class="label">
+            {{unbound transaction.summary}}
+          </div>
+          <div class="details">
+            <span class="detail">{{unbound transaction.detail}}</span>
+          </div>
+        </td>
+        <td class="transaction-date">
+          {{fmt-moment moment=transaction.createdAt fmt="MMM Do, YYYY"}}
+        </td>
+        <td class="transaction-withdrawl">
+          {{#if transaction.isWithdrawl}}
+            {{fmt-dollars cents=transaction.amountInCents style=false sign="-"}}
+          {{/if}}
+        </td>
+        <td class="transaction-deposit">
+          {{#if transaction.isDeposit}}
+            {{fmt-dollars cents=transaction.amountInCents style=false}}
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -1,34 +1,34 @@
-table.accounts-index
+table.content-table
   width: 100%
 
-  thead
-    display: none
-
   tbody tr
-    cursor: pointer
-
-    td
-      +transition(background-color ease-in-out 200ms)
-
     &:hover td
       background-color: #fffeef
 
-  th, td
-    font-size: 18px
-    padding: 0 $gutter
-    vertical-align: middle
+  th
+    text-align: left
+    height: $header-height / 2
+
+  td
     height: $header-height
+    text-align: left
+
+  th, td
+    font-size: 16px
+    padding: 0 $gutter / 2
+    vertical-align: middle
     border-bottom: 1px solid #ddd
     background: white
-
-  .account-info
-    text-align: left
+    &:first-child
+      padding-left: $gutter
+    &:last-child
+      padding-right: $gutter
 
     .label
       position: relative
       top: -1px
       font-weight: bold
-      font-size: 18px
+      font-size: 16px
       line-height: 24px
 
     .details
@@ -42,6 +42,3 @@ table.accounts-index
 
         &:last-child:after
           content: ""
-
-  .account-balance
-    text-align: right

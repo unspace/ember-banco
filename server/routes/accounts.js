@@ -74,7 +74,7 @@ module.exports = function(app) {
   });
 
   router.get('/accounts/:id', function(req, res) {
-    var found = app.findAccount(req.query.id);
+    var found = app.findAccount(req.param('id'));
 
     if (found) {
       res.send({ account: found });
