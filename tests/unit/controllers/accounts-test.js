@@ -13,15 +13,15 @@ moduleFor('controller:accounts', 'Accounts Controller', {
   teardown: function () {}
 });
 
-test('it exists', function(){
+test('it exists', function() {
   ok(this.subject());
 });
 
-test('it has models', function(){
+test('it has models', function() {
   equal(this.subject().get('model').length, 2);
 });
 
-test('it sorts in inverse order', function(){
+test('it sorts in inverse order', function() {
   equal(this.subject().get('firstObject.updatedAt')._i, '2013-09-14');
   equal(this.subject().get('sorted.firstObject.updatedAt')._i, '2014-09-13');
 });
