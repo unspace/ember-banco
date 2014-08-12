@@ -2,12 +2,11 @@
   <h1>Transfer Funds</h1>
 </header>
 
-{{#ui-form model=this action="submit"}}
+{{#ui-form model=model action="submit"}}
   {{#ui-form-field for="payee"}}
-    {{log types}}
     {{fast-select items=payees
       labelPath="label"
-      valuePath="this"
-      value=model.payee}}
+      valuePath="id"
+      value=model.payee.id}}
   {{/ui-form-field}}
 {{/ui-form}}
