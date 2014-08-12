@@ -54,16 +54,3 @@ test('it displays accounts properties', function() {
     equal(balance.text().trim(), '-$64.82');
   });
 });
-
-test('it links to the transaction list', function() {
-  visit('/accounts/3f946b41-e8c3-4e1b-ac6d-8f3099728fe7');
-
-  andThen(function() {
-    click(find('td.account-info').first());
-  });
-
-  andThen(function() {
-    equal(currentPath(), 'account.transactions.index');
-  });
-});
-
