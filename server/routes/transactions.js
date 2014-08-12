@@ -9,7 +9,7 @@ module.exports = function(app) {
       type:            'cr',
       summary:         'Cheque Deposit',
       detail:          'Partner ABM - BMO Bloor & Lansdowne',
-      image_url:       '/assets/cheques/3f309941-ce83-41eb-c6ad-46b7283f9fe7.jpg',
+      image_url:       '/assets/cheques/9f309941-ce83-41eb-c6ad-46b7283f9fe7.jpg',
       amount_in_cents: 48500
     },
     {
