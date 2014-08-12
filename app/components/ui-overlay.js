@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
-var ESC       = 27;
-var $document = Ember.$(document);
+var ESC          = 27;
+var ANIMATIONEND = 'animationend webkitAnimationEnd oanimationend MSAnimationEnd';
+var $document    = Ember.$(document);
 
 export default Ember.Component.extend({
   classNames: 'ui-overlay',
@@ -13,7 +14,7 @@ export default Ember.Component.extend({
 
       this.$().addClass('fade-out');
 
-      this.$().on('transitionend', function() {
+      this.$().on(ANIMATIONEND, function() {
         Ember.run(function() {
           component.sendAction('close');
         });
