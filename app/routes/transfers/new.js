@@ -1,18 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  beforeModel: function() {
-    var promise    = this.store.find('payee');
-    var controller = this.controllerFor('transfers/new');
+  model: function() {
+    return this.store.createRecord('transfer');
+  },
 
-    promise.then(function(payees) {
-      controller.set('payees', payees);
+  afterModel: function() {
+    var controller = this.controllerFor('transfers/new');
+    var promise;
+
+    promise = Ember.RSVP.hash({
+      payees:   this.store.find('payee'),
+      accounts: this.store.find('account')
+    });
+
+    promise.then(function(data) {
+      controller.setProperties(data);
     });
 
     return promise;
-  },
-
-  model: function() {
-    return this.store.createRecord('transfer');
   }
 });

@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  payees: null
+  payees:   null,
+  accounts: null
 });

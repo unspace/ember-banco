@@ -4,9 +4,35 @@
 
 {{#ui-form model=model action="submit"}}
   {{#ui-form-field for="payee"}}
-    {{fast-select items=payees
+    <label for="transfer-payee">To Payee</label>
+
+    {{fast-select
+      items=payees
+      id="transfer-payee"
+      class="ui-form-control"
       labelPath="label"
       valuePath="id"
-      value=model.payee.id}}
+      selected=model.payee}}
+  {{/ui-form-field}}
+
+  {{#ui-form-field for="account"}}
+    <label for="transfer-account">From Account</label>
+
+    {{fast-select
+      items=accounts
+      id="transfer-account"
+      class="ui-form-control"
+      labelPath="label"
+      valuePath="id"
+      selected=model.account}}
+  {{/ui-form-field}}
+
+  {{#ui-form-field for="amountInCents"}}
+    <label for="transfer-amount">Amount</label>
+
+    <span class="ui-form-control">
+      <span class="symbol">$</span>
+      {{~ui-dollar-input cents=model.amountInCents id="transfer-amount"}}
+    </span>
   {{/ui-form-field}}
 {{/ui-form}}
