@@ -21,6 +21,14 @@ export default Ember.Component.extend({
     }
   },
 
+  closeIfClickedOutsideOfContentArea: function(event) {
+    if (event.target !== this.get('element')) {
+      return;
+    }
+
+    this.send('close');
+  }.on('click'),
+
   addFadeInClass: function() {
     this.$().addClass('fade-in');
   }.on('didInsertElement'),
