@@ -1,10 +1,6 @@
 table.content-table
   width: 100%
 
-  tbody tr
-    &:hover td
-      background-color: #fffeef
-
   th
     background: lighten($banco-orange, 30%)
     text-align: left
@@ -17,12 +13,17 @@ table.content-table
     background: white
     border-bottom: 1px solid #ddd
 
+  tr:nth-of-type(even) td
+    background-color: lighten($banco-orange, 49%)
+
   th, td
     font-size: 16px
     padding: 0 $gutter / 2
     vertical-align: middle
+
     &:first-child
       padding-left: $gutter
+
     &:last-child
       padding-right: $gutter
 

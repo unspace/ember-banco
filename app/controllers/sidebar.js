@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
 
   currentPath: Ember.computed.alias('controllers.application.currentPath'),
 
-  inOverview: Ember.computed.match('currentPath', /^index$/),
-  inAccounts: Ember.computed.match('currentPath', /^account/)
+  inOverview:  Ember.computed.match('currentPath', /^index$/),
+  inAccounts:  Ember.computed.match('currentPath', /^account/),
+  inTransfers: Ember.computed.match('currentPath', /^transfer/)
 });

@@ -5,8 +5,15 @@
 <table class="content-table accounts">
   <thead>
     <tr>
-      <th>Account</th>
-      <th>Balance</th>
+      <th class="account-info">
+        Account
+      </th>
+      <th class="account-updated">
+        Last Active
+      </th>
+      <th class="account-balance">
+        Balance
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -23,10 +30,10 @@
             <span class="currency">
               {{unbound account.currency}}
             </span>
-            <span class="updated-at">
-              Updated {{rel-time time=account.updatedAt}}
-            </span>
           </div>
+        </td>
+        <td class="account-updated">
+          {{rel-time time=account.updatedAt}}
         </td>
         <td class="account-balance">
           {{fmt-dollars cents=account.balanceInCents}}

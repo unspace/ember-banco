@@ -33,7 +33,7 @@ module.exports = function(app) {
     {
       id:              '6f309941-ce83-41eb-c6ad-46b7283f9fe7',
       account_id:      '3f946b41-e8c3-4e1b-ac6d-8f3099728fe7',
-      created_at:      '2014-07-05T15:02:45.528Z',
+      created_at:      '2014-08-05T15:02:45.528Z',
       type:            'cr',
       summary:         'Interac e-Transfer: mattia@unspace.ca',
       detail:          'Message: Reimbursement for dog food.',
@@ -100,26 +100,12 @@ module.exports = function(app) {
   app.TRANSACTIONS = TRANSACTIONS;
 
   app.findTransaction = function(id) {
-    var i;
-    var t;
-
-    for (i = 0; i < TRANSACTIONS.length; i++) {
-      t = TRANSACTIONS[i];
-
-      if (t.id === id) {
-        return t;
-      }
-    }
-
-    return null;
+    return app.findOne('transaction', id);
   }
 
   router.get('/transactions', function(req, res) {
-    var transactions = [];
     var accountId = req.query.account_id;
-    var account = app.findAccount(accountId);
-    var i;
-    var t;
+    var account   = app.findAccount(accountId);
 
     if (!account) {
       res.status(404).send({
@@ -132,35 +118,14 @@ module.exports = function(app) {
       return;
     }
 
-    for (i = 0; i < TRANSACTIONS.length; i++) {
-      t = TRANSACTIONS[i];
-
-      if (t.account_id !== accountId) {
-        continue;
-      } else {
-        transactions.push(t);
-      }
-    }
-
     res.send({
-      transactions: transactions,
+      transactions: app.filter('transactions', { account_id: accountId }),
       account: account
     });
   });
 
   router.get('/transactions/:id', function(req, res) {
-    var found = app.findTransaction(req.param('id'));
-
-    if (found) {
-      res.send({ transaction: found });
-    } else {
-      res.status(404).send({
-        error: {
-          code: 'not_found',
-          detail: 'Transaction not found'
-        }
-      });
-    }
+    app.renderOne(res, 'transaction', app.findTransaction(req.param('id')));
   });
 
   app.use('/api', router);

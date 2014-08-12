@@ -1,0 +1,48 @@
+<header>
+  <h1>Transfers</h1>
+</header>
+
+<table class="content-table transfers">
+  <thead>
+    <tr>
+      <th class="transfer-to">
+        To
+      </th>
+      <th class="transfer-account">
+        From
+      </th>
+      <th class="transfer-state">
+        Status
+      </th>
+      <th class="transfer-date">
+        Date
+      </th>
+      <th class="transfer-amount">
+        Amount
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each transfer in sorted}}
+      <tr>
+        <td class="transfer-to">
+          {{unbound transfer.payee}}
+        </td>
+        <td class="transfer-account">
+          {{unbound transfer.account}}
+        </td>
+        <td class="transfer-state">
+          <span {{bind-attr class=":state transfer.state"}}>
+            {{unbound transfer.stateName}}
+          </span>
+        </td>
+        <td class="transfer-date">
+          {{fmt-moment transfer.createdAt}}
+        </td>
+        <td class="transfer-amount">
+          {{fmt-dollars cents=transfer.amountInCents}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

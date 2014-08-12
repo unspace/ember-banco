@@ -1,7 +1,14 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-var ACCOUNTS = {
+function cpLookup(key, dictObj) {
+  return Ember.computed(function() {
+    var id = this.get(key);
+    return id ? dictObj[id] : null;
+  }).property(key);
+}
+
+var TYPES = {
   isa:           'Savings',
   tfsa:          'Tax Free Savings',
   transactional: 'Chequing'
@@ -19,13 +26,6 @@ var PLANS = {
   'transactional.unlimited':            'Chequing Unlimited'
 };
 
-function cpLookup(key, dictObj) {
-  return Ember.computed(function() {
-    var id = this.get(key);
-    return id ? dictObj[id] : null;
-  }).property(key);
-}
-
 export default DS.Model.extend({
   label:           DS.attr('string'),
   type:            DS.attr('string'),
@@ -39,5 +39,5 @@ export default DS.Model.extend({
 
   plan:        cpLookup('planType', PLANS),
   currency:    cpLookup('balanceCurrency', CURRENCIES),
-  description: cpLookup('type', ACCOUNTS)
+  description: cpLookup('type', TYPES)
 });

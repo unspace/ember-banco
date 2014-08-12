@@ -51,20 +51,7 @@ module.exports = function(app) {
   app.ACCOUNTS = ACCOUNTS;
 
   app.findAccount = function(id) {
-    var i;
-    var a;
-    var found = null;
-
-    for (i = 0; i < ACCOUNTS.length; i++) {
-      a = ACCOUNTS[i];
-
-      if (a.id === id) {
-        found = a;
-        break;
-      }
-    }
-
-    return found;
+    return app.findOne('account', id);
   };
 
   router.get('/accounts', function(req, res) {
@@ -74,18 +61,7 @@ module.exports = function(app) {
   });
 
   router.get('/accounts/:id', function(req, res) {
-    var found = app.findAccount(req.param('id'));
-
-    if (found) {
-      res.send({ account: found });
-    } else {
-      res.status(404).send({
-        error: {
-          code: 'not_found',
-          detail: 'Account not found'
-        }
-      });
-    }
+    app.findOne(res, 'account', app.findAccount(req.param('id')));
   });
 
   app.use('/api', router);

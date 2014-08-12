@@ -17,5 +17,68 @@ module.exports = function(app) {
     extended: true
   }));
 
+  app.renderOne = function(res, root, obj) {
+    var body = {};
+
+    if (obj) {
+      body[root] = obj;
+      res.send(body);
+    } else {
+      res.status(404).send({
+        error: {
+          code: 'not_found',
+          detail: 'Could not find ' + root
+        }
+      });
+    }
+  };
+
+  app.findOne = function(collectionName, id) {
+    var collection = collectionName.toUpperCase() + 'S';
+    var all = app[collection];
+    var i;
+    var obj;
+
+    for (i = 0; i < all.length; i++) {
+      obj = all[i];
+
+      if (obj.id === id) {
+        return obj;
+      }
+    }
+
+    return null;
+  };
+
+  app.filter = function(collectionName, filters) {
+    var matches = [];
+    var all = app[collectionName.toUpperCase()];
+    var i;
+    var obj;
+    var key;
+    var value;
+    var isMatch;
+
+    for (i = 0; i < all.length; i++) {
+      obj     = all[i];
+      isMatch = true;
+
+      for (key in filters) {
+        value = filters[key];
+
+        if (obj[key] !== value) {
+          isMatch = false;
+          break;
+        }
+      }
+
+      if (isMatch) {
+        matches.push(obj);
+      }
+    }
+
+    return matches;
+  };
+
   routes.forEach(function(route) { route(app); });
 };

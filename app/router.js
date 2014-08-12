@@ -12,6 +12,8 @@ Router.map(function() {
       this.route('image', { path: '/transactions/:transaction_id/image' });
     });
   });
+
+  this.resource('transfers');
 });
 
 export default Router;
