@@ -38,6 +38,9 @@ export default Ember.Component.extend({
   },
 
   startTicking: function() {
+    if (window.BancoENV.environment === "test") {
+      return;
+    }
     this.tick();
   }.on('didInsertElement'),
 
