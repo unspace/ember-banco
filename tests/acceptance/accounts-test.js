@@ -29,15 +29,6 @@ test('has a title', function() {
   });
 });
 
-test('has a title', function() {
-  visit('/accounts');
-
-  andThen(function() {
-    var title = find('header h1').text().trim();
-    equal(title, 'Banking Accounts');
-  });
-});
-
 test('it lists the accounts', function() {
   visit('/accounts');
 

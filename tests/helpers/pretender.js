@@ -105,6 +105,19 @@ export default function() {
       return [200, {"Content-Type": "application/json"}, {accounts: ACCOUNTS}];
     });
 
+    this.get('/api/accounts/:id', function(request){
+      var i, a;
+      for (i = 0; i < ACCOUNTS.length; i++) {
+        a = ACCOUNTS[i];
+
+        if (a.id !== request.params.id) {
+          continue;
+        } else {
+          return [200, {"Content-Type": "application/json"}, {account: a}];
+        }
+      }
+    });
+
     this.get('/api/transactions', function(req) {
       var accountId = req.queryParams['account_id'];
       var i, t, found = [];
