@@ -8,10 +8,10 @@
   background-color: rgba(white, 0.95)
 
   &.fade-in
-    +animation(fade-in 300ms both)
+    +animation(fade-in $transition-duration both)
 
   &.fade-out
-    +animation(fade-out 300ms both)
+    +animation(fade-out $transition-duration both)
 
 .ui-overlay-close
   z-index: 9999999
@@ -29,7 +29,7 @@
     line-height: 1
     font-weight: 100
     color: $banco-dark-orange
-    +transition(color ease-in-out 250ms)
+    +transition(color ease-in-out $transition-duration)
     outline: none
 
     &:hover
