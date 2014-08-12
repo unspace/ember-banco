@@ -1,5 +1,14 @@
 <header>
   <h1>Transfers</h1>
+  <nav>
+    <ul>
+      <li>
+        {{#link-to "transfers.new"}}
+          Pay Bills &amp; Transfer Funds
+        {{/link-to}}
+      </li>
+    </ul>
+  </nav>
 </header>
 
 <table class="content-table transfers">
@@ -11,11 +20,11 @@
       <th class="transfer-account">
         From
       </th>
-      <th class="transfer-state">
-        Status
-      </th>
       <th class="transfer-date">
         Date
+      </th>
+      <th class="transfer-state">
+        Status
       </th>
       <th class="transfer-amount">
         Amount
@@ -23,24 +32,24 @@
     </tr>
   </thead>
   <tbody>
-    {{#each transfer in sorted}}
+    {{#each transfer in this}}
       <tr>
         <td class="transfer-to">
-          {{unbound transfer.payee}}
+          {{transfer.payee.label}}
         </td>
         <td class="transfer-account">
-          {{unbound transfer.account}}
+          {{transfer.account.label}}
+        </td>
+        <td class="transfer-date">
+          {{fmt-moment moment=transfer.createdAt fmt="MMM Do, YYYY"}}
         </td>
         <td class="transfer-state">
           <span {{bind-attr class=":state transfer.state"}}>
             {{unbound transfer.stateName}}
           </span>
         </td>
-        <td class="transfer-date">
-          {{fmt-moment transfer.createdAt}}
-        </td>
         <td class="transfer-amount">
-          {{fmt-dollars cents=transfer.amountInCents}}
+          {{fmt-dollars cents=transfer.amountInCents style=false}}
         </td>
       </tr>
     {{/each}}

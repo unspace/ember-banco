@@ -61,7 +61,7 @@ module.exports = function(app) {
   });
 
   router.get('/accounts/:id', function(req, res) {
-    app.findOne(res, 'account', app.findAccount(req.param('id')));
+    app.renderOne(res, 'account', app.findAccount(req.param('id')));
   });
 
   app.use('/api', router);

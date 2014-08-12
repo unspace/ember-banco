@@ -13,11 +13,32 @@ module.exports = function(app) {
 
   var PAYEES = [
     {
-      id:         '7cc4537e-f16e-4e81-953d-1f4cb9858993',
+      id:         '2cc4537e-f16e-4e81-953d-1f4cb9858993',
       created_at: '2011-06-08T11:02:22.112Z',
       type:       'iet',
       label:      'Mattia Gheda',
       route:      'mattia@unspace.ca'
+    },
+    {
+      id:         '1dc4537e-f16e-4e81-953d-1f4cb9858993',
+      created_at: '2009-09-21T18:32:44.922Z',
+      type:       'bill',
+      label:      'Enbridge',
+      route:      '20034-A-44424931'
+    },
+    {
+      id:         '1db4537e-f16e-4e81-953d-1f4cb9858993',
+      created_at: '2009-01-04T01:22:17.201Z',
+      type:       'cc',
+      label:      'PC Mastercard',
+      route:      '5104 4444 4444 4444'
+    },
+    {
+      id:         '1cc4537e-f16e-4e81-953d-1f4cb9858993',
+      created_at: '2003-02-26T00:00:00.000Z',
+      type:       'iet',
+      label:      'Mom',
+      route:      'mom@example.com'
     }
   ];
 
@@ -37,7 +58,7 @@ module.exports = function(app) {
       return { errors: { type: ['is not allowed'] } };
     }
 
-    if (String.prototype.trim(payee.label) === '') {
+    if ((payee.label || '').trim() === '') {
       return { errors: { label: ['must be provided'] } };
     }
 
@@ -45,7 +66,7 @@ module.exports = function(app) {
       return { errors: { route: ['is not a valid email address'] } };
     }
 
-    if (String.prototype.trim(payee.route) === '') {
+    if ((payee.route || '').trim() === '') {
       return { errors: { route: ['must be provided'] } };
     }
 
@@ -55,27 +76,19 @@ module.exports = function(app) {
   };
 
   app.findPayee = function(id) {
-    var i;
-    var p;
-
-    for (i = 0; i < PAYEES.length; i++) {
-      p = PAYEES[i];
-
-      if (p.id === id) {
-        return p;
-      }
-    }
-
-    return null;
+    return app.findOne('payee', id);
   };
 
   router.post('/payees', function(req, res) {
-    var payee = app.createPayee(req.body);
+    var payee = app.createPayee(req.body.payee);
 
     if (payee.errors) {
       res.status(422).send(payee);
     } else {
-      res.status(201).location('/payees/' + payee.id).send();
+      res.status(201)
+        .set('Content-Type', 'application/vnd.banco.v1+json')
+        .location('/api/payees/' + payee.id)
+        .send({ payee: payee });
     }
   });
 

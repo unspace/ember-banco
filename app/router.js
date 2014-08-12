@@ -13,7 +13,9 @@ Router.map(function() {
     });
   });
 
-  this.resource('transfers');
+  this.resource('transfers', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

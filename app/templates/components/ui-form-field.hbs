@@ -1,0 +1,9 @@
+<label {{bind-attr for=fieldGuid}}>
+  {{label}}
+</label>
+
+{{#if template}}
+  {{yield}}
+{{else}}
+  {{input type=type value=value id=fieldGuid class="ui-form-field-control"}}
+{{/if}}
