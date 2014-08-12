@@ -11,5 +11,16 @@ export default Ember.Route.extend({
       into: 'application',
       outlet: 'overlay'
     });
+  },
+
+  actions: {
+    close: function() {
+      this.disconnectOutlet({
+        parentView: 'application',
+        outlet: 'overlay'
+      });
+
+      this.transitionTo('account.transactions', this.modelFor('account'));
+    }
   }
 });

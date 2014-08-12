@@ -1,0 +1,56 @@
+.ui-overlay
+  z-index: 999999
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background-color: rgba(white, 0.95)
+
+  &.fade-in
+    +animation(fade-in 300ms both)
+
+  &.fade-out
+    +animation(fade-out 300ms both)
+
+.ui-overlay-close
+  z-index: 9999999
+  position: fixed
+  top: 10px
+  right: $gutter + 12px
+
+  button
+    cursor: pointer
+    border: none
+    background: transparent
+    font-size: 98px
+    padding: 0
+    margin: 0
+    line-height: 1
+    font-weight: 100
+    color: $banco-dark-orange
+    +transition(color ease-in-out 250ms)
+    outline: none
+
+    &:hover
+      color: $banco-orange
+
+    &:active
+      +transition(none)
+      color: saturate($banco-orange, 30%)
+
+    span
+      display: none
+
+    &:before
+      content: "\00d7"
+
+.ui-overlay-content
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  margin: auto
+  width: 650px
+  height: 290px
