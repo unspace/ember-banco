@@ -19,5 +19,20 @@ export default Ember.Route.extend({
     });
 
     return promise;
+  },
+
+  actions: {
+    willTransition: function(transition) {
+      var model = this.modelFor('transfers/new');
+
+      if (model.get('isLoading')) {
+        transition.abort();
+        return;
+      }
+
+      if (model.get('isDirty')) {
+        model.deleteRecord();
+      }
+    }
   }
 });

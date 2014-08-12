@@ -9,7 +9,8 @@ export default Ember.Component.extend({
 
   isInvalid: Ember.computed.bool('model.errors.length'),
 
-  submitForm: function() {
+  submit: function(event) {
+    event.preventDefault();
     this.sendAction();
-  }.on('submit')
+  }
 });

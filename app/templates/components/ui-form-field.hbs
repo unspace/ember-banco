@@ -5,5 +5,11 @@
     {{label}}
   </label>
 
-  {{input type=type value=value id=fieldGuid class="ui-form-field-control"}}
+  {{input type=type value=value id=fieldGuid class="ui-form-control"}}
+
+  {{errors}}
+
+  {{#if isInvalid}}
+    <em class="ui-form-error">{{errors.firstObject.message}}</em>
+  {{/if}}
 {{/if}}

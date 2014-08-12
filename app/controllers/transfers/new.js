@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.ObjectController.extend({
   payees:   null,
-  accounts: null
+  accounts: null,
+
+  actions: {
+    submit: function() {
+      this.get('model').save();
+    }
+  }
 });
