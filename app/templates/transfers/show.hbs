@@ -1,30 +1,69 @@
 <header>
   <h1>View Transfer</h1>
+  <nav>
+    <ul>
+      <li>
+        {{#link-to "transfers"}}
+          Back To Transfers
+        {{/link-to}}
+      </li>
+    </ul>
+  </nav>
 </header>
 
-<dl>
-  <dt>From Account</dt>
-  <dd>{{account.label}} ({{account.number}})</dd>
-  <dt>Balance</dt>
-  <dd>{{fmt-dollars cents=account.balanceInCents}}</dd>
-  <dt>New Balance</dt>
-  <dd>{{fmt-dollars cents=newAccountBalanceInCents}}</dd>
-  <dt>Sent To</dt>
-  <dd>{{payee.typeLabel}} - {{payee.detail}}</dt>
-  <dt>Amount</dt>
-  <dd>{{fmt-dollars cents=amountInCents}}</dd>
-  <dt>Date</dt>
-  <dd>{{fmt-moment moment=createdAt}}</dd>
-  {{#if ietMessage}}
-    <dt>Message</dt>
-    <dd>{{ietMessage}}</dd>
-  {{/if}}
-  <dt>Confirmation Number</dt>
-  <dd>{{id}}</dd>
-</dl>
+<table class="content-table pairs transfer">
+  <tbody>
+    <tr class="transfer-id">
+      <th scope="row">Confirmation Number</th>
+      <td>{{id}}</td>
+    </tr>
 
-<nav>
-  {{#link-to "transfers"}}
-    Back To Transfers
-  {{/link-to}}
-</nav>
+    <tr class="transfer-state">
+      <th scope="row">Status</th>
+      <td>
+        <span {{bind-attr class=":state state"}}>{{stateName}}</span>
+      </td>
+    </tr>
+
+    <tr class="transfer-from">
+      <th scope="row">From Account</th>
+      <td>
+        {{#link-to "account" account}}
+          {{account.label}} ({{account.number}})
+        {{/link-to}}
+      </td>
+    </tr>
+
+    <tr class="transfer-account-balance">
+      <th scope="row">Balance</th>
+      <td>{{fmt-dollars cents=account.balanceInCents}}</td>
+    </tr>
+
+    <tr class="transfer-new-account-balance">
+      <th scope="row">New Balance</th>
+      <td>{{fmt-dollars cents=newAccountBalanceInCents}}</td>
+    </tr>
+
+    <tr class="transfer-payee">
+      <th scope="row">Sent To</th>
+      <td>{{payee.typeLabel}} / {{payee.detail}}</td>
+    </tr>
+
+    <tr class="transfer-amount">
+      <th scope="row">Amount</th>
+      <td>{{fmt-dollars cents=amountInCents}}</td>
+    </tr>
+
+    <tr class="transfer-created-at">
+      <th scope="row">Date</th>
+      <td>{{fmt-moment moment=createdAt fmt="MMMM Do, YYYY \at LT"}}</td>
+    </tr>
+
+    {{#if ietMessage}}
+      <tr class="transfer-iet-message">
+        <th scope="row">Message</th>
+        <td>{{ietMessage}}</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>

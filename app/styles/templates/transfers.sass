@@ -5,22 +5,25 @@ table.transfers
   .transfer-state
     text-align: center
 
-    .state
-      background: #aaa
-      color: white
-      font-size: 14px
-      font-weight: bold
-      display: inline-block
-      height: 26px
-      line-height: 26px
-      border-radius: 12px
-      padding: 0 10px
+table.transfer
+  hi: ok
 
-      &.complete
-        background: #69aa55
+.transfer-state .state
+  background: #aaa
+  color: white
+  font-size: 14px
+  font-weight: bold
+  display: inline-block
+  height: 26px
+  line-height: 26px
+  border-radius: 12px
+  padding: 0 10px
 
-      &.pending
-        background: #55a1aa
+  &.complete
+    background: #69aa55
 
-      &.failed
-        background: #ff4141
+  &.pending
+    background: #55a1aa
+
+  &.failed
+    background: #ff4141

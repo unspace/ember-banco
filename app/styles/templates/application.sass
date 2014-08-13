@@ -42,6 +42,18 @@ body
       &:before
         display: none
 
+a
+  color: $banco-orange
+  +transition(color ease-in-out $transition-duration)
+
+  &:hover
+    color: saturate($banco-orange, 30%)
+
+  &:active
+    +transition(none)
+    color: $banco-dark-orange
+
+
 body > div
   > header
     z-index: 9999

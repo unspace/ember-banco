@@ -2,21 +2,19 @@
   outline: none
   text-decoration: none
   display: inline-block
-  background: rgba(white, 0.75)
+  background-color: $blue
+  border: 2px solid $blue
   height: 33px
   line-height: 31px
   padding: 0 $gutter / 2
   margin: 0
-  border: 2px solid lighten($blue, 10%)
   border-radius: 5px
-  color: desaturate($blue, 5%)
+  color: white
 
   &:hover
-    color: darken(desaturate($blue, 5%), 5%)
-    border-color: $blue
-    background-color: rgba(white, 0.85)
+    background-color: lighten($blue, 5%)
+    border-color: lighten($blue, 5%)
 
   &:active
-    border-color: $blue
-    background-color: $blue
-    color: white
+    background: rgba(white, 0.75)
+    color: $blue

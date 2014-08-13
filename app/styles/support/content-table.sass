@@ -10,20 +10,21 @@ table.content-table
     &:hover td
       background-color: $cell-hover-yellow
 
-  th
+  thead th
     background: lighten($banco-orange, 30%)
     text-align: left
     height: $header-height / 2
     border-bottom: none
 
-  td
+  td, th
     height: $header-height
     text-align: left
     background: white
     border-bottom: 1px solid #ddd
 
-  tr:nth-of-type(even) td
-    background-color: lighten($banco-orange, 49%)
+  tr:nth-of-type(even)
+    td, th
+      background-color: lighten($banco-orange, 49%)
 
   th, td
     font-size: 16px
@@ -54,3 +55,6 @@ table.content-table
 
         &:last-child:after
           content: ""
+
+  &.pairs th
+    text-align: right
