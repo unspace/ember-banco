@@ -1,0 +1,62 @@
+.ui-form
+  position: relative
+  background: white
+
+  label, input, textarea, select
+    font-size: 18px
+    outline: none
+
+  textarea, input
+    background: white
+    border: 1px solid #ddd
+    +box-sizing(padding-box)
+    padding: 4px
+
+  textarea
+    line-height: 1.5em
+
+  input
+    display: inline-block
+
+  label
+    font-weight: 700
+
+  fieldset
+    border: none
+    padding: $gutter 0
+    margin: 0
+
+  fieldset.actions
+    padding: 0
+    min-height: $header-height
+    background: #ddd
+    padding-left: 35%
+    line-height: $header-height
+
+    button[type="submit"]
+      +button
+      height: 38px
+      padding: 0 20px
+      line-height: 1
+
+    .or
+      color: #888
+      font-style: italic
+      margin: 0 8px
+      margin-top: -2px
+
+    .cancel
+      display: inline
+      outline: none
+      padding: 0
+      margin: 0
+      background: transparent
+      border: none
+      color: #ff4141
+      text-decoration: underline
+
+      &:active
+        color: lighten(#ff4141, 15%)
+
+    button:first-child
+      margin-left: $gutter
