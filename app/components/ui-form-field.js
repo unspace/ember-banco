@@ -1,6 +1,12 @@
 import Ember from 'ember';
 import capitalize from 'banco/utils/capitalize';
 
+var TYPES = {
+  select:   'select',
+  textarea: 'textarea',
+  dollars:  'dollars'
+};
+
 export default Ember.Component.extend({
   tagName:           'div',
   classNames:        'ui-form-field',
@@ -10,15 +16,11 @@ export default Ember.Component.extend({
   model:      Ember.computed.alias('form.model'),
   isInvalid:  Ember.computed.bool('errors.length'),
   isOptional: Ember.computed.bool('optional'),
-  isTextArea: Ember.computed.equal('type', 'textarea'),
-  isSelect:   Ember.computed.equal('type', 'select'),
-  isDollars:  Ember.computed.equal('type', 'dollars'),
 
-  isInput: function() {
-    return !this.get('isTextArea') &&
-      !this.get('isSelect') &&
-      !this.get('isDollars');
-  }.property('isTextArea', 'isSelect'),
+  controlPartialPath: function() {
+    var type = TYPES[this.get('type')] || 'input';
+    return 'components/ui-form-field/' + type;
+  }.property('type'),
 
   installCpAliases: function() {
     var field = this.get('for');

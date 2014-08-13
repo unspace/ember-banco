@@ -5,30 +5,7 @@
     {{label}}
   </label>
 
-  {{#if isSelect}}
-    {{fast-select
-      items=items
-      class="ui-form-control"
-      id=fieldGuid
-      labelPath=labelPath
-      valuePath=valuePath
-      selected=selected}}
-  {{/if}}
-
-  {{#if isTextArea}}
-    {{textarea value=value id=fieldGuid class="ui-form-control"}}
-  {{/if}}
-
-  {{#if isDollars}}
-    <span class="ui-form-control">
-      <span class="symbol">$</span>
-      {{~ui-dollar-input cents=value id=fieldGuid}}
-    </span>
-  {{/if}}
-
-  {{#if isInput}}
-    {{input type=type value=value id=fieldGuid class="ui-form-control"}}
-  {{/if}}
+  {{partial controlPartialPath}}
 {{/if}}
 
 {{#if isInvalid}}
