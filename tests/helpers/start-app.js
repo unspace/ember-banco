@@ -3,6 +3,7 @@
 var Application = require('banco/app')['default'];
 var Router = require('banco/router')['default'];
 import Ember from 'ember';
+import customHelpers from './custom-helpers';
 
 export default function startApp(attrs) {
   var App;

@@ -73,6 +73,15 @@ data.TRANSFERS = [
     state:           'complete',
     detail:          'Memo: Thanks for spotting me for lunch!',
     amount_in_cents: 1400
+  },
+  {
+    id:              '1f309941-b443-41eb-c6ad-aaaaaaaaaaaa',
+    payee_id:        '1cc4537e-f16e-4e81-953d-1f4cb9858993',
+    account_id:      '3f946b41-e8c3-4e1b-ac6d-8f3099728fe7',
+    created_at:      '2013-08-01T13:02:45.528Z',
+    state:           'complete',
+    detail:          'Memo: Thanks for the coffee',
+    amount_in_cents: 400
   }
 ];
 
@@ -182,6 +191,10 @@ export default function() {
     this.get('/api/payees/:id', function(request){
       var payee = findOne('payee', request.params.id);
       return [200, {"Content-Type": "application/json"}, {payee: payee}];
+    });
+
+    this.get('/api/payees', function(request){
+      return [200, {"Content-Type": "application/json"}, {payees: data.PAYEES}];
     });
   });
 
