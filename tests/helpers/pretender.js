@@ -1,6 +1,7 @@
 // partially stolen from Discourse's Ember tests
 // https://github.com/discourse/discourse/blob/master/test/javascripts/helpers/create-pretender.js.es6
-var SESSION = {
+var data = {};
+data.SESSION = {
   id:                 'current',
   name:               'Carsten Nielsen',
   email:              'carsten@unspace.ca',
@@ -16,7 +17,7 @@ var SESSION = {
   wantsPartnerEmails: false
 };
 
-var ACCOUNTS = [
+data.ACCOUNTS = [
   {
     id:                '3f946b41-e8c3-4e1b-ac6d-8f3099728fe7',
     updated_at:        '2014-08-08T15:02:45.528Z',
@@ -41,7 +42,7 @@ var ACCOUNTS = [
   }
 ];
 
-var TRANSACTIONS = [
+data.TRANSACTIONS = [
   {
     id:              '9f309941-ce83-41eb-c6ad-46b7283f9fe7',
     account_id:      '3f946b41-e8c3-4e1b-ac6d-8f3099728fe7',
@@ -62,6 +63,52 @@ var TRANSACTIONS = [
     amount_in_cents: 6482
   }
 ];
+
+data.TRANSFERS = [
+  {
+    id:              '1f309941-b443-41eb-c6ad-46b7283f9fe7',
+    payee_id:        '2cc4537e-f16e-4e81-953d-1f4cb9858993',
+    account_id:      '3f946b41-e8c3-4e1b-ac6d-8f3099728fe7',
+    created_at:      '2013-08-08T15:02:45.528Z',
+    state:           'complete',
+    detail:          'Memo: Thanks for spotting me for lunch!',
+    amount_in_cents: 1400
+  }
+];
+
+data.PAYEES = [
+  {
+    id:         '2cc4537e-f16e-4e81-953d-1f4cb9858993',
+    created_at: '2011-06-08T11:02:22.112Z',
+    type:       'iet',
+    label:      'Mattia Gheda',
+    route:      'mattia@unspace.ca'
+  },
+  {
+    id:         '1cc4537e-f16e-4e81-953d-1f4cb9858993',
+    created_at: '2003-02-26T00:00:00.000Z',
+    type:       'iet',
+    label:      'Mom',
+    route:      'mom@example.com'
+  }
+];
+
+function findOne(collectionName, id) {
+  var collection = collectionName.toUpperCase() + 'S';
+  var all = data[collection];
+  var i;
+  var obj;
+
+  for (i = 0; i < all.length; i++) {
+    obj = all[i];
+
+    if (obj.id === id) {
+      return obj;
+    }
+  }
+
+  return null;
+}
 
 function parsePostData(query) {
   var result = {};
@@ -84,8 +131,8 @@ function findTransaction(id) {
   var i;
   var t;
 
-  for (i = 0; i < TRANSACTIONS.length; i++) {
-    t = TRANSACTIONS[i];
+  for (i = 0; i < data.TRANSACTIONS.length; i++) {
+    t = data.TRANSACTIONS[i];
 
     if (t.id === id) {
       return t;
@@ -98,31 +145,25 @@ function findTransaction(id) {
 export default function() {
   var server = new window.Pretender(function() {
     this.get('/api/session', function(request){
-      return [200, {"Content-Type": "application/json"}, {session: SESSION}];
+      return [200, {"Content-Type": "application/json"}, {session: data.SESSION}];
     });
 
     this.get('/api/accounts', function(request){
-      return [200, {"Content-Type": "application/json"}, {accounts: ACCOUNTS}];
+      return [200, {"Content-Type": "application/json"}, {accounts: data.ACCOUNTS}];
     });
 
     this.get('/api/accounts/:id', function(request){
       var i, a;
-      for (i = 0; i < ACCOUNTS.length; i++) {
-        a = ACCOUNTS[i];
-
-        if (a.id !== request.params.id) {
-          continue;
-        } else {
-          return [200, {"Content-Type": "application/json"}, {account: a}];
-        }
-      }
+      var account = findOne('account', request.params.id);
+      return [200, {"Content-Type": "application/json"}, {account: account}];
     });
 
     this.get('/api/transactions', function(req) {
       var accountId = req.queryParams['account_id'];
       var i, t, found = [];
-      for (i = 0; i < TRANSACTIONS.length; i++) {
-        t = TRANSACTIONS[i];
+
+      for (i = 0; i < data.TRANSACTIONS.length; i++) {
+        t = data.TRANSACTIONS[i];
 
         if (t.account_id !== accountId) {
           continue;
@@ -132,6 +173,15 @@ export default function() {
       }
 
       return [200, {"Content-Type": "application/json"}, {transactions: found}];
+    });
+
+    this.get('/api/transfers', function(request){
+      return [200, {"Content-Type": "application/json"}, {transfers: data.TRANSFERS}];
+    });
+
+    this.get('/api/payees/:id', function(request){
+      var payee = findOne('payee', request.params.id);
+      return [200, {"Content-Type": "application/json"}, {payee: payee}];
     });
   });
 
