@@ -19,7 +19,7 @@ Router.map(function() {
     this.route('show', { path: '/:transfer_id' });
   });
 
-  this.route('modelNotFound');
+  this.route('modelNotFound', { path: '/not-found' });
 });
 
 export default Router;
