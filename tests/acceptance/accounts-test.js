@@ -24,8 +24,7 @@ test('has a title', function() {
   visit('/accounts');
 
   andThen(function() {
-    var title = find('header h1').text().trim();
-    equal(title, 'Banking Accounts');
+    findFirstAndCheckText('main header h1', 'Banking Accounts');
   });
 });
 
@@ -42,12 +41,10 @@ test('it displays accounts properties', function() {
   visit('/accounts');
 
   andThen(function() {
-    var account = find('td.account-info').first();
-    equal(find('.label', account).text().trim(), 'Personal Chequing');
-    equal(find('.type', account).text().trim(), 'Chequing');
-    equal(find('.currency', account).text().trim(), 'CAD');
-    var balance = find('td.account-balance').first();
-    equal(balance.text().trim(), '$200.00');
+    findFirstAndCheckText('td.account-info .label', 'Personal Chequing');
+    findFirstAndCheckText('td.account-info .type', 'Chequing');
+    findFirstAndCheckText('td.account-info .currency', 'CAD');
+    findFirstAndCheckText('td.account-balance', '$200.00');
   });
 });
 

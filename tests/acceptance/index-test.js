@@ -23,6 +23,6 @@ test('Welcomes you to the app', function() {
   visit('/');
 
   andThen(function() {
-    equal(find('#welcome').text().trim(), 'Welcome to Banco');
+    findFirstAndCheckText('#welcome', 'Welcome to Banco');
   });
 });

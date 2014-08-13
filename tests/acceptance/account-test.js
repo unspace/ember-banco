@@ -24,8 +24,7 @@ test('has a title', function() {
   visit('/accounts/3f946b41-e8c3-4e1b-ac6d-8f3099728fe7');
 
   andThen(function() {
-    var title = find('header h1').text().trim();
-    equal(title, 'Personal Chequing');
+    findFirstAndCheckText('main header h1', 'Personal Chequing');
   });
 });
 
@@ -43,14 +42,12 @@ test('it displays accounts properties', function() {
 
   andThen(function() {
     var transaction = find('td.transaction-info').first();
-    equal(find('.label', transaction).text().trim(), 'Cheque Deposit');
-    equal(find('.detail', transaction).text().trim(), 'Partner ABM - BMO Bloor & Lansdowne');
-    equal(find('td.transaction-date').first().text().trim(), 'Aug 8th, 2014');
-    var balance = find('td.transaction-withdrawl').first();
-    equal(balance.text().trim(), '');
-    balance = find('td.transaction-deposit').first();
-    equal(balance.text().trim(), '$485.00');
-    balance = find('td.transaction-withdrawl').last();
+    findFirstAndCheckText('td.transaction-info .label', 'Cheque Deposit');
+    findFirstAndCheckText('td.transaction-info .detail', 'Partner ABM - BMO Bloor & Lansdowne');
+    findFirstAndCheckText('td.transaction-date', 'Aug 8th, 2014');
+    findFirstAndCheckText('td.transaction-withdrawl', '');
+    findFirstAndCheckText('td.transaction-deposit', '$485.00');
+    var balance = find('td.transaction-withdrawl').last();
     equal(balance.text().trim(), '-$64.82');
   });
 });
