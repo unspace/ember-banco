@@ -24,7 +24,7 @@ test('has a title', function() {
   visit('/accounts/3f946b41-e8c3-4e1b-ac6d-8f3099728fe7');
 
   andThen(function() {
-    findFirstAndCheckText('main header h1', 'Personal Chequing');
+    findFirstAndCheckText('main header h1', 'Personal Chequing #');
   });
 });
 
