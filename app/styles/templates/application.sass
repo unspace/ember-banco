@@ -43,15 +43,15 @@ body
         display: none
 
 a
-  color: lighten($banco-orange, 8%)
+  color: darken($blue, 10%)
   +transition(color ease-in-out $transition-duration)
 
   &:hover
-    color: saturate(lighten($banco-orange, 8%), 30%)
+    color: darken($blue, 20%)
 
   &:active
     +transition(none)
-    color: $banco-dark-orange
+    color: darken($blue, 30%)
 
 
 body > div
