@@ -6,12 +6,11 @@ export default Ember.TextField.extend({
 
   formatValue: function() {
     var cents;
-    var dollars;
-    var value = this.$().val();
-    dollars = parseFloat(value, 10);
+    var value   = this.$().val();
+    var dollars = parseFloat(value, 10);
 
     if (isNaN(dollars) || Ember.isNone(dollars)) {
-      cents = 0;
+      cents   = 0;
       dollars = 0;
     } else {
       cents = (dollars * 100).toFixed(0);
@@ -22,9 +21,7 @@ export default Ember.TextField.extend({
   }.on('focusOut'),
 
   value: function() {
-    var cents;
-
-    cents = this.get('cents');
+    var cents = this.get('cents');
 
     if (cents) {
       return (cents / 100).toFixed(2);
