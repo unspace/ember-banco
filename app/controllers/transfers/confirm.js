@@ -6,12 +6,16 @@ export default Ember.ObjectController.extend({
       var controller = this;
 
       this.get('model').save().then(function(transfer) {
-        controller.transitionTo('transfers.show', transfer);
+        controller.transitionToRoute('transfers.show', transfer);
       }, Ember.K);
     },
 
     cancel: function() {
+      var controller = this;
 
+      this.get('model').destroyRecord().then(function() {
+        controller.transitionToRoute('transfers.index');
+      });
     }
   }
 });

@@ -1,6 +1,15 @@
 table.content-table
   width: 100%
 
+  tr.link
+    cursor: pointer
+
+    td
+      +transition(background-color ease-in-out $transition-duration)
+
+    &:hover td
+      background-color: $cell-hover-yellow
+
   th
     background: lighten($banco-orange, 30%)
     text-align: left

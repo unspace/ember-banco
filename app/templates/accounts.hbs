@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     {{#each account in sorted}}
-      {{#link-to "account.transactions" account tagName="tr"}}
+      {{#link-to "account.transactions" account tagName="tr" class="link"}}
         <td class="account-info">
           <div class="label">
             {{unbound account.label}}

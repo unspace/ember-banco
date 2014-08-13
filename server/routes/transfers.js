@@ -74,6 +74,19 @@ module.exports = function(app) {
     }
   });
 
+  router.delete('/transfers/:id', function(req, res) {
+    var transfer = app.findTransfer(req.param('id'));
+
+    if (!transfer || transfer.state !== 'unconfirmed') {
+      res.status(404).send({ error: { code: 'not_found' } });
+      return;
+    }
+
+    app.TRANSFERS.splice(app.TRANSFERS.indexOf(transfer), 1);
+
+    res.status(204).send();
+  });
+
   router.put('/transfers/:id', function(req, res) {
     var transfer = app.findTransfer(req.param('id'));
     var payee    = app.findPayee(transfer.payee_id);

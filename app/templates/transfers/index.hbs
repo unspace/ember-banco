@@ -33,7 +33,7 @@
   </thead>
   <tbody>
     {{#each transfer in this}}
-      <tr>
+      {{#link-to "transfers.show" transfer tagName="tr" classNameBindings=":link transfer.state"}}
         <td class="transfer-to">
           {{transfer.payee.label}}
         </td>
@@ -45,13 +45,13 @@
         </td>
         <td class="transfer-state">
           <span {{bind-attr class=":state transfer.state"}}>
-            {{unbound transfer.stateName}}
+            {{transfer.stateName}}
           </span>
         </td>
         <td class="transfer-amount">
           {{fmt-dollars cents=transfer.amountInCents style=false}}
         </td>
-      </tr>
+      {{/link-to}}
     {{/each}}
   </tbody>
 </table>
