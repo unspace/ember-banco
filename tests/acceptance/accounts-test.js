@@ -24,7 +24,7 @@ test('has a title', function() {
   visit('/accounts');
 
   andThen(function() {
-    findFirstAndCheckText('main header h1', 'Banking Accounts');
+    findFirstAndCheckText('main header h1', 'Bank Accounts');
   });
 });
 
