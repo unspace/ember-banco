@@ -4,12 +4,12 @@ import capitalize from 'banco/utils/capitalize';
 export default Ember.Component.extend({
   tagName:           'div',
   classNames:        'ui-form-field',
-  classNameBindings: 'isInvalid',
+  classNameBindings: ['isInvalid', 'isOptional'],
 
-  form:      Ember.computed.alias('parentView'),
-  model:     Ember.computed.alias('form.model'),
-  isInvalid: Ember.computed.bool('errors.length'),
-
+  form:       Ember.computed.alias('parentView'),
+  model:      Ember.computed.alias('form.model'),
+  isInvalid:  Ember.computed.bool('errors.length'),
+  isOptional: Ember.computed.bool('optional'),
   isTextArea: Ember.computed.equal('type', 'textarea'),
   isSelect:   Ember.computed.equal('type', 'select'),
   isDollars:  Ember.computed.equal('type', 'dollars'),

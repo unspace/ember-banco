@@ -1,12 +1,6 @@
-import Ember from 'ember';
 import DS from 'ember-data';
-
-function cpLookup(key, dictObj) {
-  return Ember.computed(function() {
-    var id = this.get(key);
-    return id ? dictObj[id] : null;
-  }).property(key);
-}
+import formatDollars from 'banco/utils/format-dollars';
+import cpLookup from 'banco/utils/cp-lookup';
 
 var TYPES = {
   isa:           'Savings',
@@ -42,13 +36,6 @@ export default DS.Model.extend({
   description: cpLookup('type', TYPES),
 
   detail: function() {
-    var amount;
-    var cents = this.get('balanceInCents');
-    var isNeg = cents < 0;
-    var dollars = (Math.abs(cents) / 100).toFixed(2);
-
-    amount = isNeg ? '(-$' + dollars + ')' : '$' + dollars;
-
-    return this.get('label') + ': ' + amount;
-  }.property('label', 'balanceInCents', 'balanceCurrency')
+    return this.get('label') + ': ' + formatDollars(this.get('balanceInCents'));
+  }.property('label', 'balanceInCents')
 });

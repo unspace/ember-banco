@@ -31,7 +31,7 @@ module.exports = function(app) {
       created_at: '2009-01-04T01:22:17.201Z',
       type:       'cc',
       label:      'PC Mastercard',
-      route:      '5104 4444 4444 4444'
+      route:      '5104 XXXX XXXX 4444'
     },
     {
       id:         '1cc4537e-f16e-4e81-953d-1f4cb9858993',

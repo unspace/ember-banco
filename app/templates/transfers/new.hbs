@@ -21,11 +21,8 @@
     type="dollars"
     label="Amount"}}
 
-  Hi: {{payee.type}}
-  OK: {{payee.isIET}}
-
   {{#if payee.isIET}}
-    {{ui-form-field for="message" type="textarea"}}
+    {{ui-form-field for="message" type="textarea" optional=true}}
   {{/if}}
 
   <fieldset>

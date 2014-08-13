@@ -9,7 +9,7 @@ module.exports = function(app) {
       account_id:      '3f946b41-e8c3-4e1b-ac6d-8f3099728fe7',
       created_at:      '2013-08-08T15:02:45.528Z',
       state:           'complete',
-      detail:          'Memo: Thanks for spotting me for lunch!',
+      message:         'Thanks for spotting me for lunch!',
       amount_in_cents: 1400
     }
   ];
