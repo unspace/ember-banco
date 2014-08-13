@@ -15,6 +15,8 @@ Router.map(function() {
 
   this.resource('transfers', function() {
     this.route('new');
+    this.route('confirm', { path: '/:transfer_id/confirm' });
+    this.route('show', { path: '/:transfer_id' });
   });
 });
 

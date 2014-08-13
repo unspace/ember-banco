@@ -3,31 +3,29 @@
 </header>
 
 {{#ui-form model=model action="submit"}}
-  {{ui-form-field for="payee"
-    type="select"
-    items=payees
-    labelPath="detail"
-    valuePath="id"
-    selected=payee}}
+  <fieldset>
+    {{ui-form-field for="payee"
+      label="Transfer To"
+      type="select"
+      items=payees
+      labelPath="detail"
+      selected=payee}}
 
-  {{ui-form-field for="account"
-    type="select"
-    items=accounts
-    labelPath="detail"
-    valuePath="id"
-    selected=account}}
+    {{ui-form-field for="account"
+      label="From Account"
+      type="select"
+      items=accounts
+      labelPath="detail"
+      selected=account}}
 
-  {{ui-form-field for="amountInCents"
-    type="dollars"
-    label="Amount"}}
-
-  {{#if payee.isIET}}
-    {{ui-form-field for="message" type="textarea" optional=true}}
-  {{/if}}
+    {{ui-form-field for="amountInCents"
+      type="dollars"
+      label="Amount"}}
+  </fieldset>
 
   <fieldset>
     <button type="submit">Transfer Funds</button>
-    or
+    <span class="or">or</span>
     {{#link-to "transfers"}}Cancel{{/link-to}}
   </fieldset>
 {{/ui-form}}

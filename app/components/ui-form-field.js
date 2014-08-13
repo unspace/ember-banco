@@ -12,10 +12,14 @@ export default Ember.Component.extend({
   classNames:        'ui-form-field',
   classNameBindings: ['isInvalid', 'isOptional'],
 
-  form:       Ember.computed.alias('parentView'),
-  model:      Ember.computed.alias('form.model'),
+  form:  Ember.computed.alias('parentView'),
+  model: Ember.computed.alias('form.model'),
+
   isInvalid:  Ember.computed.bool('errors.length'),
   isOptional: Ember.computed.bool('optional'),
+
+  valuePath: 'id',
+  labelPath: 'label',
 
   controlPartialPath: function() {
     var type = TYPES[this.get('type')] || 'input';

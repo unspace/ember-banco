@@ -1,0 +1,31 @@
+<header>
+  <h1>Confirm Your Transfer</h1>
+</header>
+{{#ui-form model=this action="submit"}}
+  <fieldset>
+    <div class="ui-form-field">
+      <label for="amount">Amount</label>
+      <span class="ui-form-control">
+        <span class="symbol">$</span>
+        {{~ui-dollar-input disabled=true cents=amountInCents}}
+      </span>
+    </div>
+
+    {{ui-form-field for="verifyAmountInCents" type="dollars" label="Confirm Amount"}}
+  </fieldset>
+
+  {{#if payee.isIET}}
+    <fieldset>
+      <legend>Interac e-Transfer</legend>
+      {{ui-form-field for="ietQuestion" type="text" label="Security Question"}}
+      {{ui-form-field for="ietAnswer" type="text" label="Security Answer"}}
+      {{ui-form-field for="ietMessage" type="textarea" label="Message" optional=true}}
+    </fieldset>
+  {{/if}}
+
+  <fieldset>
+    <button type="submit">Confirm &amp; Transfer Funds</button>
+    <span>or</span>
+    <button {{action "cancel"}}>Cancel</button>
+  </fieldset>
+{{/ui-form}}

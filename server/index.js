@@ -17,6 +17,12 @@ module.exports = function(app) {
     extended: true
   }));
 
+  app.renderModelError = function(res, field, errorMsg) {
+    var error = {};
+    error[field] = [errorMsg];
+    res.status(422).send({ errors: error });
+  };
+
   app.renderOne = function(res, root, obj) {
     var body = {};
 
@@ -66,9 +72,16 @@ module.exports = function(app) {
       for (key in filters) {
         value = filters[key];
 
-        if (obj[key] !== value) {
-          isMatch = false;
-          break;
+        if (value instanceof Array) {
+          if (value.indexOf(obj[key]) === -1) {
+            isMatch = false;
+            break;
+          }
+        } else {
+          if (obj[key] !== value) {
+            isMatch = false;
+            break;
+          }
         }
       }
 

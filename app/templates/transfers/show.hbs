@@ -1,0 +1,22 @@
+<header>
+  <h1>Transfer</h1>
+</header>
+
+<dl>
+  <dt>From Account</dt>
+  <dd>{{account.label}}</dd>
+  <dt>Transfer To</dt>
+  <dd>{{payee.label}}</dt>
+  <dt>Amount</dt>
+  <dd>{{fmt-dollars cents=amountInCents}}</dd>
+  <dt>Date</dt>
+  <dd>{{fmt-moment moment=createdAt}}</dd>
+  <dt>Transfer ID</dt>
+  <dd>{{id}}</dd>
+</dl>
+
+<nav>
+  {{#link-to "transfers"}}
+    Back To Transfers
+  {{/link-to}}
+</nav>
