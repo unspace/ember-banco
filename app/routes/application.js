@@ -36,6 +36,17 @@ export default Ember.Route.extend({
       return true;
     },
 
+    error: function(error) {
+      var $body = Ember.$('body');
+      $body.removeClass('loading reveal');
+
+      if (error && error.status === 404) {
+        return this.transitionTo('modelNotFound');
+      }
+
+      return true;
+    },
+
     closeOverlay: function() {
       var route = this;
       var $body = Ember.$('body');

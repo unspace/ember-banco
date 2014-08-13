@@ -18,6 +18,8 @@ Router.map(function() {
     this.route('confirm', { path: '/:transfer_id/confirm' });
     this.route('show', { path: '/:transfer_id' });
   });
+
+  this.route('modelNotFound');
 });
 
 export default Router;
