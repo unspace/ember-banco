@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+var TRANSITIONEND = 'transitionend webkitTransitionEnd msTransitionEnd oTransitionEnd';
+
 export default Ember.Route.extend({
   model: function() {
     return Ember.RSVP.hash({
@@ -40,8 +42,8 @@ export default Ember.Route.extend({
 
       Ember.$('body').addClass('dismiss-overlay');
 
-      Ember.$('body').on('transitionend', function() {
-        $body.removeClass('dismiss-overlay', 'has-overlay');
+      Ember.$('body').on(TRANSITIONEND, function() {
+        $body.removeClass('dismiss-overlay has-overlay');
 
         route.disconnectOutlet({
           outlet: 'overlay',
