@@ -1,3 +1,13 @@
 .loading-cover
   .loading-indicator
-    animation: spin
+    position: fixed
+    top: $header-height
+    left: $sidebar-width
+    right: 0
+    bottom: 0
+    width: 25vh
+    height: 25vh
+    margin: auto
+    background-color: $banco-orange
+    border-radius: 100%
+    +animation(scale-out 1s infinite ease-in-out)
