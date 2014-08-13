@@ -43,11 +43,11 @@ body
         display: none
 
 a
-  color: $banco-orange
+  color: lighten($banco-orange, 8%)
   +transition(color ease-in-out $transition-duration)
 
   &:hover
-    color: saturate($banco-orange, 30%)
+    color: saturate(lighten($banco-orange, 8%), 30%)
 
   &:active
     +transition(none)
