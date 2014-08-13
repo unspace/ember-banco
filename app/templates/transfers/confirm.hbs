@@ -4,28 +4,44 @@
 {{#ui-form model=this action="submit"}}
   <fieldset>
     <div class="ui-form-field">
-      <label for="amount">Amount</label>
-      <span class="ui-form-control">
-        <span class="symbol">$</span>
-        {{~ui-dollar-input disabled=true cents=amountInCents}}
+      <label>From Account</label>
+      <span class="ui-form-control-container">
+        <span class="ui-form-control">
+          {{account.label}} ({{account.number}})
+        </span>
+      </span>
+    </div>
+
+    <div class="ui-form-field">
+      <label>To Payee</label>
+      <span class="ui-form-control-container">
+        <span class="ui-form-control">
+          {{payee.label}} ({{payee.route}})
+        </span>
+      </span>
+    </div>
+
+    <div class="ui-form-field">
+      <label>Amount</label>
+      <span class="ui-form-control-container">
+        <span class="ui-form-control">
+          {{fmt-dollars cents=amountInCents}}
+        </span>
       </span>
     </div>
 
     {{ui-form-field for="verifyAmountInCents" type="dollars" label="Confirm Amount"}}
-  </fieldset>
 
-  {{#if payee.isIET}}
-    <fieldset>
-      <legend>Interac e-Transfer</legend>
+    {{#if payee.isIET}}
       {{ui-form-field for="ietQuestion" type="text" label="Security Question"}}
       {{ui-form-field for="ietAnswer" type="text" label="Security Answer"}}
       {{ui-form-field for="ietMessage" type="textarea" label="Message" optional=true}}
-    </fieldset>
-  {{/if}}
+    {{/if}}
+  </fieldset>
 
   <fieldset class="actions">
     <button type="submit">Confirm &amp; Transfer Funds</button>
     <span>or</span>
-    <button {{action "cancel"}}>Cancel</button>
+    <button class="cancel" {{action "cancel"}}>Cancel</button>
   </fieldset>
 {{/ui-form}}

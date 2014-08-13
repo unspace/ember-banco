@@ -10,7 +10,7 @@ var TYPES = {
 export default Ember.Component.extend({
   tagName:           'div',
   classNames:        'ui-form-field',
-  classNameBindings: ['isInvalid', 'isOptional'],
+  classNameBindings: ['isInvalid', 'isOptional', 'controlType'],
 
   form:  Ember.computed.alias('parentView'),
   model: Ember.computed.alias('form.model'),
@@ -20,6 +20,10 @@ export default Ember.Component.extend({
 
   valuePath: 'id',
   labelPath: 'label',
+
+  controlType: function() {
+    return this.get('type') || 'text';
+  }.property('type'),
 
   controlPartialPath: function() {
     var type = TYPES[this.get('type')] || 'input';

@@ -4,6 +4,19 @@
 
   label, input, textarea, select
     font-size: 18px
+    outline: none
+
+  textarea, input
+    background: white
+    border: 1px solid #ddd
+    +box-sizing(padding-box)
+    padding: 4px
+
+  textarea
+    line-height: 1.5em
+
+  input
+    display: inline-block
 
   label
     font-weight: 700
@@ -17,6 +30,30 @@
     padding: 0
     min-height: $header-height
     background: #ddd
+    padding-left: 35%
+    line-height: $header-height
+
+    button[type="submit"]
+      +button
+      height: 40px
+      padding: 0 20px
+      line-height: 32px
+
+    .cancel
+      display: inline
+      outline: none
+      padding: 0
+      margin: 0
+      background: transparent
+      border: none
+      color: #ff4141
+      text-decoration: underline
+
+      &:active
+        color: lighten(#ff4141, 15%)
+
+    button:first-child
+      margin-left: $gutter
 
 .ui-form-field
   position: relative
@@ -26,24 +63,68 @@
   label
     position: absolute
     display: block
-    width: 25%
+    width: 35%
     left: 0
     text-align: right
     line-height: $header-height
 
   .ui-form-control
     margin-left: $gutter
-    width: 40%
+    width: 60%
 
   .ui-form-control-container
     position: absolute
     display: block
-    width: 75%
+    width: 65%
     right: 0
     line-height: $header-height
 
   .ui-form-error
-    position: relative
-    background: red
-    color: white
-    line-height: 1.35em
+    position: absolute
+    bottom: -8px
+    left: $gutter
+    background: #ff4141
+    color: #fff
+    line-height: 20px
+    height: 22px
+    font-size: 13px
+    border-radius: 4px
+    padding: 0 6px
+    width: auto
+    overflow: visible
+
+    &:before
+      border: solid
+      border-color: #ff4141 transparent
+      border-width: 0 6px 6px 6px
+      top: -5px
+      content: ""
+      left: 48%
+      position: absolute
+      z-index: 99
+
+  &.is-invalid
+    label
+      color: #ff4141
+
+    input, textarea, select
+      background: lighten(#ff4141, 40%)
+      border-color: #ff4141
+
+    &.dollars
+      .symbol
+        color: #ff4141
+
+  &.dollars
+    .symbol
+      position: relative
+      right: -14px
+      top: -1px
+      color: $green
+
+    .ui-form-control
+      margin-left: $gutter - 8px
+
+    input
+      padding-left: 18px
+      width: 124px

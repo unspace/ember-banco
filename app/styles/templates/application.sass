@@ -122,25 +122,7 @@ body > div
           padding: 0
 
         a
-          text-decoration: none
-          display: inline-block
-          background: rgba(white, 0.75)
-          height: 33px
-          line-height: 31px
-          padding: 0 $gutter / 2
-          border: 2px solid lighten($blue, 10%)
-          border-radius: 5px
-          color: desaturate($blue, 5%)
-
-          &:hover
-            color: darken(desaturate($blue, 5%), 5%)
-            border-color: $blue
-            background-color: rgba(white, 0.85)
-
-          &:active
-            border-color: $blue
-            background-color: $blue
-            color: white
+          +button
 
   > footer
     position: fixed
