@@ -18,3 +18,11 @@ test('visiting /', function() {
     equal(currentPath(), 'index');
   });
 });
+
+test('Welcomes you to the app', function() {
+  visit('/');
+
+  andThen(function() {
+    equal(find('#welcome').text().trim(), 'Welcome to Banco');
+  });
+});
