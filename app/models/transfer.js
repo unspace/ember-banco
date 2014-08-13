@@ -23,5 +23,9 @@ export default DS.Model.extend({
     var state = this.get('state');
 
     return STATES[state] || 'Unknown';
+  }.property('state'),
+
+  isConfirmed: function() {
+    return this.get('state') !== 'unconfirmed';
   }.property('state')
 });

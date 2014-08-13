@@ -23,6 +23,7 @@ var PLANS = {
 export default DS.Model.extend({
   label:           DS.attr('string'),
   type:            DS.attr('string'),
+  number:          DS.attr('string'),
   updatedAt:       DS.attr('moment'),
   balanceInCents:  DS.attr('number'),
   balanceCurrency: DS.attr('string'),

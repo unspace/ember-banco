@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 
   model: function() {
     return this.store.filter('transfer', function(transfer) {
-      return !transfer.get('isNew');
+      return transfer.get('isConfirmed');
     });
   }
 });

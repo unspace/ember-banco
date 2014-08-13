@@ -4,14 +4,22 @@
 
 <dl>
   <dt>From Account</dt>
-  <dd>{{account.label}}</dd>
-  <dt>Transfer To</dt>
-  <dd>{{payee.label}}</dt>
+  <dd>{{account.label}} ({{account.number}})</dd>
+  <dt>Balance</dt>
+  <dd>{{fmt-dollars cents=account.balanceInCents}}</dd>
+  <dt>New Balance</dt>
+  <dd>{{fmt-dollars cents=newAccountBalanceInCents}}</dd>
+  <dt>Sent To</dt>
+  <dd>{{payee.typeLabel}} - {{payee.detail}}</dt>
   <dt>Amount</dt>
   <dd>{{fmt-dollars cents=amountInCents}}</dd>
   <dt>Date</dt>
   <dd>{{fmt-moment moment=createdAt}}</dd>
-  <dt>Transfer ID</dt>
+  {{#if ietMessage}}
+    <dt>Message</dt>
+    <dd>{{ietMessage}}</dd>
+  {{/if}}
+  <dt>Confirmation Number</dt>
   <dd>{{id}}</dd>
 </dl>
 

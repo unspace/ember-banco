@@ -4,19 +4,19 @@
 
 {{#ui-form model=model action="submit"}}
   <fieldset>
-    {{ui-form-field for="payee"
-      label="Transfer To"
-      type="select"
-      items=payees
-      labelPath="detail"
-      selected=payee}}
-
     {{ui-form-field for="account"
       label="From Account"
       type="select"
       items=accounts
       labelPath="detail"
       selected=account}}
+
+    {{ui-form-field for="payee"
+      label="To Payee"
+      type="select"
+      items=payees
+      labelPath="detail"
+      selected=payee}}
 
     {{ui-form-field for="amountInCents"
       type="dollars"
