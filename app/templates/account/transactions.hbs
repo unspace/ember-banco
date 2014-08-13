@@ -1,14 +1,14 @@
 <header class="account-header">
-  <h1>{{unbound account.label}} #{{unbound account.number}}</h1>
+  <h1>{{account.label}} #{{account.number}}</h1>
   <h2>
     <span class="plan">
       <span class="label">Plan:</span>
-      <span class="value">{{unbound account.plan}}</span>
+      <span class="value">{{account.plan}}</span>
     </span>
 
     <span class="currency">
       <span class="label">Currency:</span>
-      <span class="value">{{unbound account.currency}}</span>
+      <span class="value">{{account.currency}}</span>
     </span>
 
     <span class="balance">
@@ -19,7 +19,7 @@
     {{#if account.interestRate}}
       <span class="interest-rate">
         <span class="label">Rate:</span>
-        <span>{{unbound account.interestRate}}%</span>
+        <span>{{account.interestRate}}%</span>
       </span>
     {{/if}}
   </h2>
@@ -51,11 +51,11 @@
       <tr {{bind-attr class="transaction.hasImage:has-image"}}>
         <td class="transaction-info">
           <div class="label">
-            {{unbound transaction.summary}}
+            {{transaction.summary}}
           </div>
 
           <div class="details">
-            <span class="detail">{{unbound transaction.detail}}</span>
+            <span class="detail">{{transaction.detail}}</span>
           </div>
 
           {{#if transaction.hasImage}}
