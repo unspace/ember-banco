@@ -29,7 +29,7 @@ export default Ember.Route.extend({
         $body.addClass('reveal');
 
         $body.one('transitionend', function() {
-          $body.removeClass('loading', 'reveal');
+          $body.removeClass('loading reveal');
         });
       });
 
