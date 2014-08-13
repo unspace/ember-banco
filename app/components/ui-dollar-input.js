@@ -4,7 +4,7 @@ export default Ember.TextField.extend({
   classNames: 'ui-dollar-input',
   cents: null,
 
-  blurHandler: function(){
+  formatValue: function() {
     var cents;
     var dollars;
     var value = this.$().val();
