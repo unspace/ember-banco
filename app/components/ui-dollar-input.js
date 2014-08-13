@@ -4,31 +4,32 @@ export default Ember.TextField.extend({
   classNames: 'ui-dollar-input',
   cents: null,
 
-  value: function(key, value) {
+  blurHandler: function(){
     var cents;
     var dollars;
+    var value = this.$().val();
+    dollars = parseFloat(value, 10);
 
-    if (arguments.length === 1) {
-      cents = this.get('cents');
-
-      if (cents) {
-        return (cents / 100).toFixed(2);
-      } else {
-        return '0.00';
-      }
+    if (isNaN(dollars) || Ember.isNone(dollars)) {
+      cents = 0;
+      dollars = 0;
     } else {
-      dollars = parseFloat(value, 10);
+      cents = (dollars * 100).toFixed(0);
+    }
 
-      if (isNaN(dollars) || Ember.isNone(dollars)) {
-        cents = 0;
-        dollars = 0;
-      } else {
-        cents = (dollars * 100).toFixed(0);
-      }
+    this.set('cents', cents);
+    this.set('value', dollars.toFixed(2));
+  }.on('focusOut'),
 
-      this.set('cents', cents);
+  value: function() {
+    var cents;
 
-      return dollars.toFixed(2);
+    cents = this.get('cents');
+
+    if (cents) {
+      return (cents / 100).toFixed(2);
+    } else {
+      return '0.00';
     }
   }.property('cents')
 });
