@@ -39,5 +39,16 @@ export default DS.Model.extend({
 
   plan:        cpLookup('planType', PLANS),
   currency:    cpLookup('balanceCurrency', CURRENCIES),
-  description: cpLookup('type', TYPES)
+  description: cpLookup('type', TYPES),
+
+  detail: function() {
+    var amount;
+    var cents = this.get('balanceInCents');
+    var isNeg = cents < 0;
+    var dollars = (Math.abs(cents) / 100).toFixed(2);
+
+    amount = isNeg ? '(-$' + dollars + ')' : '$' + dollars;
+
+    return this.get('label') + ': ' + amount;
+  }.property('label', 'balanceInCents', 'balanceCurrency')
 });

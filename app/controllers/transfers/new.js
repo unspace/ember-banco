@@ -6,8 +6,7 @@ export default Ember.ObjectController.extend({
 
   actions: {
     submit: function() {
-      this.get('model').save().catch(function(){
-      });
+      this.get('model').save().catch(Ember.K);
     }
   }
 });

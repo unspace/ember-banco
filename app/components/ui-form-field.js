@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import capitalize from 'banco/utils/capitalize';
 
 export default Ember.Component.extend({
   tagName:           'div',
@@ -8,6 +9,16 @@ export default Ember.Component.extend({
   form:      Ember.computed.alias('parentView'),
   model:     Ember.computed.alias('form.model'),
   isInvalid: Ember.computed.bool('errors.length'),
+
+  isTextArea: Ember.computed.equal('type', 'textarea'),
+  isSelect:   Ember.computed.equal('type', 'select'),
+  isDollars:  Ember.computed.equal('type', 'dollars'),
+
+  isInput: function() {
+    return !this.get('isTextArea') &&
+      !this.get('isSelect') &&
+      !this.get('isDollars');
+  }.property('isTextArea', 'isSelect'),
 
   installCpAliases: function() {
     var field = this.get('for');
@@ -26,9 +37,7 @@ export default Ember.Component.extend({
   }.property('for', 'model'),
 
   label: function() {
-    return this.get('for').dasherize().split('-').map(function(word) {
-      return word.capitalize();
-    }).join(' ');
+    return capitalize(this.get('for'));
   }.property('for'),
 
   clearErrors: function() {

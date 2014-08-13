@@ -1,9 +1,10 @@
 import DS from 'ember-data';
 
 var STATES = {
+  unconfirmed: 'Unconfirmed',
+  pending:  'Pending',
   complete: 'Complete',
-  pending: 'Pending',
-  failed: 'Failed'
+  failed:   'Failed'
 };
 
 export default DS.Model.extend({
