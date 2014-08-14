@@ -69,6 +69,7 @@ Here are some helpful links to Ember and Ember-CLI resources:
 * [Ember API Documentation](http://emberjs.com/api/)
 * [Ember Data API Documentation](http://emberjs.com/api/data/)
 * [Handlebars.js](http://handlebarsjs.com/) - The template language used by Ember
+* [ES6 Modules Reference](http://jsmodules.io/) - All the `import` and `export` stuff you see in Banco's JavaScript files
 * [Broccoli Repo](https://github.com/broccolijs/broccoli) - Ember CLI uses Broccoli for processing
 * [Testem Repo](https://github.com/airportyh/testem) - Testem is the test runner used for `ember test --server`
 * [QUnit](http://qunitjs.com/) - The default framework Ember CLI uses for tests
