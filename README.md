@@ -9,14 +9,15 @@ to ship a non-trivial application with a realistic user experience.
 Banco means "school desk" in Italian, and in English it sort of sounds like
 "bank". Here, Banco is an educational tool wherein you learn how to use Ember
 by building a personal banking portal. It's a great problem context for
-learning Ember since we are all familiar with it, and the scope can be huge.
+learning Ember since we are all familiar with it &mdash; and the scope can be
+huge.
 
 ## Why Ember?
 
 Ember does not attempt to veil the complexity of building client MVC software.
 It aims to be the best library for building client MVC applications in the
 browser. It does this by taking the best from decades-worth of knowledge in the
-desktop world and applying it to the web platform --- the Ember way is the
+desktop world and applying it to the web platform &mdash; the Ember way is the
 web standards way.
 
 Because of Ember's nature, it can be daunting to get up and running, especially
