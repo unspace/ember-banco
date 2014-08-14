@@ -68,6 +68,7 @@ Here are some helpful links to Ember and Ember-CLI resources:
 * [Ember CLI Documentation](http://ember-cli.com)
 * [Ember API Documentation](http://emberjs.com/api/)
 * [Ember Data API Documentation](http://emberjs.com/api/data/)
+* [Promises/A+](http://promisesaplus.com/) - Information about promises
 * [Handlebars.js](http://handlebarsjs.com/) - The template language used by Ember
 * [ES6 Modules Reference](http://jsmodules.io/) - All the `import` and `export` stuff you see in Banco's JavaScript files
 * [Broccoli Repo](https://github.com/broccolijs/broccoli) - Ember CLI uses Broccoli for processing
