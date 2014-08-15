@@ -39,7 +39,7 @@ module.exports = function(app) {
       state:           'unconfirmed',
       payee_id:        params.payee_id,
       account_id:      params.account_id,
-      amount_in_cents: params.amount_in_cents,
+      amount_in_cents: params.amount_in_cents
     };
 
     var amount = parseInt(transfer.amount_in_cents, 10);
