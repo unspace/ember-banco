@@ -8,7 +8,6 @@ var TYPES = {
 };
 
 export default Ember.Component.extend({
-  tagName:           'div',
   classNames:        'ui-form-field',
   classNameBindings: ['isInvalid', 'isOptional', 'controlType'],
 
