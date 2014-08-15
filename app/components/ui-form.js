@@ -7,8 +7,8 @@ export default Ember.Component.extend({
 
   hasErrors: Ember.computed.bool('model.errors.length'),
 
-  submit: function(event) {
+  hasClickedSubmitButton: function(event) {
     event.preventDefault();
     this.sendAction();
-  }
+  }.on('submit')
 });
