@@ -1,10 +1,13 @@
+// Check out the Moment.js documentation for different formatting options:
+// http://momentjs.com/docs/#/displaying/format/
+
 import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'time',
   moment:  null,
   fmt:     'YYYY-MM-DD',
-  layout: Ember.Handlebars.compile('{{formatted}}'),
+  layout:  Ember.Handlebars.compile('{{formatted}}'),
 
   attributeBindings: 'isoDate:datetime',
 
