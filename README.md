@@ -12,26 +12,6 @@ by building a personal banking portal. It's a great problem context for
 learning Ember since we are all familiar with it &mdash; and the scope can be
 huge.
 
-## Why Ember?
-
-Ember does not attempt to veil the complexity of building client MVC software.
-It aims to be the best library for building client MVC applications in the
-browser. It does this by taking the best from decades-worth of knowledge in the
-desktop world and applying it to the web platform &mdash; the Ember way is the
-web standards way.
-
-Because of Ember's nature, it can be daunting to get up and running, especially
-if you have little or no experience with JavaScript or designing client-residing
-programs. Ember is to frontend web applications what finite state machines are
-to control statements (if-else-if). It can be hard to have to formalize your
-toughts in a certain way when you are not used to it. It can seem limiting, or
-even broken, but in a short time things click and you have a new approach for
-building more robust software that you will be proud of.
-
-Additionally, as your project expands in scope Ember's value becaomes an order
-of magnitude greater. Ember is aware of software's nature to grow and change
-over time, this is a very real problem that Ember is excellent at dealing with.
-
 ## Ember CLI
 
 [Ember CLI](http://www.ember-cli.com) is not Ember, but a command-line tool for
